@@ -1,0 +1,8 @@
+php_flag magic_quotes_gpc off
+RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/pa/temp/
+RewriteCond %{REQUEST_URI} !^/pa/public/
+RewriteCond %{REQUEST_URI} !^/pa/plugin/
+RewriteRule ^(.*)$ /pa/public/index.php?url=$1 [NC,QSA,L]
