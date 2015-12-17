@@ -5995,3 +5995,8 @@ $_POST['userId'] => han.cao
 $_POST['pwNew'] => sadfs
 $_POST['pwConfirm'] => fsdfs
 
+[12/17/2015 12:20:34 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => vivien.chanpassword
+$_POST['password'] => 
+

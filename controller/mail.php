@@ -7,13 +7,16 @@
  */
 
 /**
- * Description of post
+ * Description of mail
  *
  * @author anthony.poon
  */
-class post extends templatedHTML{
+class mail {
     //put your code here
-    function __construct() {
-        $this->content = "post.php";
+    function test() {
+        require_once __DIR__.'/../vendor/autoload.php';
+        $mailer = new mailFactory();
+        $result = $mailer->testing();
+        var_dump($result);
     }
 }

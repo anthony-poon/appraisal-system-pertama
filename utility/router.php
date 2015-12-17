@@ -3,6 +3,19 @@
 /** Check if environment is development and display errors * */
 session_start();
 
+if (!function_exists('http_response_code')){
+    function http_response_code($newcode = NULL){
+        static $code = 404;
+        if($newcode !== NULL){
+            header('X-PHP-Response-Code: '.$newcode, true, $newcode);
+            if(!headers_sent()) {
+                $code = $newcode;
+            }
+        }       
+        return $code;
+    }
+}
+
 function setReporting() {
     if (DEVELOPMENT_ENVIRONMENT == true) {
         error_reporting(E_ALL);
@@ -62,7 +75,7 @@ function callHook() {
             } else {
                 $controller->$action($param);
             }
-        } else {
+        } else {            
             http_response_code(404);
             echo "action : " . $controllerName . "->" . $action . " not found";
         }
