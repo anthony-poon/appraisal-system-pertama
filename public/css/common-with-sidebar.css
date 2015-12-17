@@ -1,0 +1,69 @@
+@font-face {
+    font-family: open-san;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+html, body {    
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    margin: 0;
+}
+
+#sidebar.wrapper {
+    font-family: open-san;
+    width: 400px;
+    color: white;
+    background-color: #1A1A1C;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+}
+
+#sidebar.wrapper>div{
+    width: 100%;
+    margin: 0 auto;
+}
+
+#sidebar.wrapper #username.wrapper {
+    width: 100%;
+    height: 200px;
+    font-size: 34px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#sidebar.wrapper #username.wrapper div{
+    margin-left: 90px;
+}
+
+#sidebar.wrapper a{
+    text-decoration: none;
+    color: white;
+}
+
+#sidebar #menu {
+    flex-grow: 1;
+    width: 70%;
+    margin: 0 0 0 auto;
+}
+
+#sidebar #menu .selection {
+    height: 50px;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    margin-left: 20px;
+    //justify-content: center;
+}
+
+#content.wrapper {
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 400px;
+}

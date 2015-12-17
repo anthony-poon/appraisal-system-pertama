@@ -63,9 +63,11 @@ function callHook() {
                 $controller->$action($param);
             }
         } else {
+            http_response_code(404);
             echo "action : " . $controllerName . "->" . $action . " not found";
         }
     } else {
+        http_response_code(404);
         echo "controller : " . $pathToController . $controllerName . ".php not found";
     }
 }

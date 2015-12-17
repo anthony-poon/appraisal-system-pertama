@@ -12,6 +12,7 @@
     define('CSS', ROOT.DS."public".DS."css".DS);
     define('VIEW', ROOT.DS."view".DS);
     define('TEMP', ROOT.DS."tmp".DS);
+    define('PASSWORD_MIN_CHAR', 4);
     $dbDriver = 'mysql';
     $dbHost = 'localhost';
     $dbUser = 'example';

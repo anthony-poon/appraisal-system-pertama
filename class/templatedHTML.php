@@ -18,17 +18,30 @@ abstract class templatedHTML implements IController {
     public $footer;
     public $content;
     public $extraCSS;
+    public $commonCSS;
 
-    public function defaultAction($param = NULL) {
+    function defaultAction($param = NULL) {
         $this->view();
     }
 
-    public function view($param = null) {
+    function view($param = null) {
+        
         if (!empty($this->content)) {
-            require_once(TEMPLATE . "commonHeader.php");
+            echo "<!DOCTYPE html>";
+            echo "<html>";
+            echo "<head>";
+            echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" charset=\"UTF-8\" />";
+            if (!empty($this->commonCSS)) {
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"public/css/$this->commonCSS\">";  
+            } else {
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"public/css/common.css\">";  
+            }
+                      
             if (!empty($this->extraCSS)) {                
                 echo "<link rel='stylesheet' type='text/css' href='public/css/$this->extraCSS'>";
             }
+            echo "</head>";
+            echo "<body>";
             if (!empty($this->header)) {
                 require_once(TEMPLATE . "$this->header");
             }
@@ -37,7 +50,9 @@ abstract class templatedHTML implements IController {
             if (!empty($this->footer)) {
                 require_once(TEMPLATE . "$this->footer");
             }
-            require_once(TEMPLATE . "commonFooter.php");            
+            require_once(TEMPLATE . "commonFooter.php");
+            echo "</body>";
+            echo "</html>";
         } else {
             echo "Content not set: <br>";
         }

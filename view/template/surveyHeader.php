@@ -43,12 +43,13 @@
         <ul>
             <!--<li>Account Setting</li>-->
             <?php if ($this->user->isAdmin) { ?>
-            <li><a href='report?uid=1'>Admin Report</a></li>
+            <li><a href='report?uid=<?php echo $this->user->activeUid ?>'>Admin Report</a></li>
             <?php } ?>
             <?php if ($this->user->isReportUser) { ?>
-            <li><a href='report?uid=1'>Department Report</a></li>
+            <li><a href='report?uid=<?php echo $this->user->activeUid ?>'>Department Report</a></li>
             <?php } ?>
             <li><a href='survey'>Main Page</a></li>
+            <li><a href='setting'>Settings</a></li>
             <li><a href='login?action=logout'>Logout</a></li>
             
         </ul>

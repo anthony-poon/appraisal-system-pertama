@@ -78,4 +78,26 @@ class userBatchOperator {
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result['user_full_name'];
     }
+    
+    function adminSetPassword($username, $pwStr, $pwConfirm) {
+        if (empty($this->dbConnection)) {
+            $this->dbConnection = new dbConnector();
+        }
+        if (!$pwStr) {
+            throw new Exception("Password cannot be empty.");
+        } elseif (strcmp($pwStr, $pwConfirm) !== 0) {
+            throw new Exception("Mismatched confirmation password.");
+        } elseif (strlen($pwStr) <= PASSWORD_MIN_CHAR) {
+            throw new Exception("Password too shorts (More than ".PASSWORD_MIN_CHAR." characters)");
+        }
+        $statement = "UPDATE pa_user SET user_password = :newPw WHERE username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(':newPw', $pwStr);
+        $query->bindValue(':username', $username);
+        $query->execute();
+        $errInfo = $this->dbConnection->errorInfo();
+        if (!$errInfo) {
+            throw new Exception($errInfo[2]);
+        }
+    }
 }

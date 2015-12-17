@@ -59,4 +59,5 @@ class formBatchOperator {
         $query->bindValue(':value', 1);
         $query->execute();
     }
+    
 }

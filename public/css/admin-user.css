@@ -1,0 +1,87 @@
+#content.wrapper {
+    font-family: open-san;
+    flex-direction: column;
+}
+
+#user-table {
+    padding-top: 50px;
+    height: 100%;
+    width: 700px;
+    margin: 0 auto;
+    color: #616161;
+}
+
+#user-table .row {
+    display: flex;  
+    height: 50px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#user-table .row .username{
+    width: 300px;
+    display: flex;
+    font-size: 16px;
+}
+
+#user-table .row .right-wrapper{
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+#user-table .row .right-wrapper>div{
+    width: 100%;
+    font-size: 14px;
+}
+
+#user-table .row .right-wrapper .buttons-row{
+    height: 100%;
+}
+
+#user-table .row .right-wrapper .buttons-row .clickable{
+    width: 150px;
+    height: 95%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FAFAFA;
+    border: 3px solid #616161;
+    color: #616161;
+}
+
+#user-table .row .right-wrapper .buttons-row .clickable:hover{
+    background-color: #616161;
+    cursor: pointer;
+    color: #FAFAFA;
+    border: 3px solid #616161;
+}
+
+
+#user-table .row .right-wrapper .hidden-form{
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#user-table .row .right-wrapper .hidden-form form{
+    margin: 5px 0;
+    display: flex;
+}
+
+#user-table .row .right-wrapper .hidden-form label{
+    width: 150px;
+}
+
+#user-table .row .right-wrapper .hidden-form input{
+    flex-grow: 1;
+}
+
+#user-table .row .right-wrapper .message{
+    height: 20px;
+    color: #D32F2F;
+}

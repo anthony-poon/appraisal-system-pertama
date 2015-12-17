@@ -138,7 +138,7 @@ and open the template in the editor.
             var fieldName = $('#plus_button_a').attr('next');
             $.ajax({
                 url: 'survey?action=addPartAItem&u=<?php echo $param['u'] ?>&r=<?php echo $param['r'] ?>&uid=<?php echo $param['uid'] ?>',
-                type: 'POST',
+                dataType: 'POST',
                 data: {
                     "fieldName": fieldName,
                     "value": ''

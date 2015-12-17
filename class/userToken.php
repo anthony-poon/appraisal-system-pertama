@@ -33,7 +33,7 @@ class userToken {
     public $countersigneeFullName;
     public $isAdmin;
     public $isReportUser;
-
+    public $activeUid;
     function __construct() {
         $this->dbConnection = new dbConnector();
     }
@@ -164,18 +164,48 @@ class userToken {
                     $this->countersignee[$val['username']] = 'counter2';
                     $this->countersigneeFullName[$val['username']] = $val['user_full_name'];
                 }
-            }
+            }            
             
+            unset($result);
+            $statement = "SELECT uid FROM pa_form_period WHERE is_active = 1";
+            $query = $this->dbConnection->prepare($statement);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            if (!empty($result)) {
+                $this->activeUid = 2;
+            }
         } else {
             throw new Exception('Cannot construct user token. Maybe username does not exist? Check the query string.');
         }
     }
 
+    function setPassword($pwStr, $pwConfirm) {
+        if (!$this->dbConnection) {
+            $this->dbConnection = new dbConnector();
+        }
+        if (!$pwStr) {
+            throw new Exception("Password cannot be empty.");
+        } elseif (strcmp($pwStr, $pwConfirm) !== 0) {
+            throw new Exception("Mismatched confirmation password.");
+        } elseif (strlen($pwStr) <= PASSWORD_MIN_CHAR) {
+            throw new Exception("Password too shorts (More than ".PASSWORD_MIN_CHAR." characters)");
+        }
+        $statement = "UPDATE pa_user SET user_password = :newPw WHERE username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(':newPw', $pwStr);
+        $query->bindValue(':username', $this->username);
+        $query->execute();
+        $errInfo = $this->dbConnection->errorInfo();
+        if (!$errInfo) {
+            throw new Exception($errInfo[2]);
+        }
+    }
+    
     function __sleep() {
         unset($this->dbConnection);
         return array("username", "appraiser", "appraisee", "availiblePeriod", "countersigner1", "countersigner2", "countersignee"
             , "appraiserFullName", "isSenior", "isAdmin", "countersignerFullName1", "countersignerFullName2", "fullName", "position"
-            , "office", "commenceDate", "department", "countersigneeFullName", "isReportUser");
+            , "office", "commenceDate", "department", "countersigneeFullName", "isReportUser", "activeUid");
     }
 
 }

@@ -1,0 +1,21 @@
+#reset-pw-box {
+    width: 60%;
+    margin: 150px auto 0 auto;
+}
+
+#reset-pw-box div {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-family: open-san;
+    color: #212121;
+    
+}
+
+#reset-pw-box> div label{
+    width: 250px;
+}
+
+#reset-pw-box .alert {
+    color: red;
+}

@@ -5364,3 +5364,634 @@ http://192.168.0.220/pa/login?action=submitLogin
 $_POST['username'] => anthony.poon
 $_POST['password'] => password
 
+[12/11/2015 05:39:47 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => anepun
+
+[12/11/2015 05:39:52 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 05:53:48 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 05:58:25 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:44:26 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/11/2015 06:44:32 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:45:20 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:48:28 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:48:48 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:49:26 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/11/2015 06:49:59 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/14/2015 02:15:30 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => pc20011196
+
+[12/14/2015 02:15:35 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/14/2015 03:06:58 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 09:47:55 am]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 09:50:32 am]
+http://ubuntu14/pa/setting/submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:50:57 am]
+http://ubuntu14/pa/settin?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:53:15 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:54:08 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:54:51 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:55:18 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:57:04 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 09:58:18 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => gf
+$_POST['pw-confirm'] => fghgdfg
+
+[12/15/2015 09:58:47 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => sdfgd
+$_POST['pw-confirm'] => sdfg
+
+[12/15/2015 10:03:13 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => s
+$_POST['pw-confirm'] => s
+
+[12/15/2015 10:04:20 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => s
+$_POST['pw-confirm'] => s
+
+[12/15/2015 10:04:25 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => antpun
+$_POST['pw-confirm'] => antpun
+
+[12/15/2015 10:06:14 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => antpun
+$_POST['pw-confirm'] => antpun
+
+[12/15/2015 10:06:43 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => antpun
+$_POST['pw-confirm'] => antpun
+
+[12/15/2015 10:06:43 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => antpun
+$_POST['pw-confirm'] => antpun
+
+[12/15/2015 10:06:57 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => antpun
+$_POST['pw-confirm'] => antpun
+
+[12/15/2015 10:07:15 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 10:07:18 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 10:07:19 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 
+
+[12/15/2015 10:15:47 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 3
+$_POST['pw-confirm'] => 3
+
+[12/15/2015 10:15:59 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 4
+$_POST['pw-confirm'] => 4
+
+[12/15/2015 10:16:02 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => sadf
+$_POST['pw-confirm'] => sdf
+
+[12/15/2015 10:16:05 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 3
+$_POST['pw-confirm'] => 
+
+[12/15/2015 10:16:06 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 
+$_POST['pw-confirm'] => 2
+
+[12/15/2015 10:16:11 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => assdfd
+$_POST['pw-confirm'] => dsddffdf
+
+[12/15/2015 10:17:36 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:31 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:48 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:49 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:50 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:50 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => dsfgsdfgsdfg
+$_POST['pw-confirm'] => sdffgsdfg
+
+[12/15/2015 10:18:56 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => ghdfgh
+$_POST['pw-confirm'] => dfghgfh
+
+[12/15/2015 10:18:57 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => ghdfgh
+$_POST['pw-confirm'] => dfghgfh
+
+[12/15/2015 10:18:58 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => ghdfgh
+$_POST['pw-confirm'] => dfghgfh
+
+[12/15/2015 10:19:00 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 555
+$_POST['pw-confirm'] => 555
+
+[12/15/2015 10:19:57 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => 87686786
+$_POST['pw-confirm'] => 78678
+
+[12/15/2015 10:20:02 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => hkhjkhj
+$_POST['pw-confirm'] => khjkhk
+
+[12/15/2015 10:20:03 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => hkhjkhj
+$_POST['pw-confirm'] => khjkhk
+
+[12/15/2015 10:20:04 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => hkhjkhj
+$_POST['pw-confirm'] => khjkhk
+
+[12/15/2015 10:20:07 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => yuiytiy
+$_POST['pw-confirm'] => ukhkgh
+
+[12/15/2015 10:20:08 am]
+http://ubuntu14/pa/setting?action=submitPW
+$_POST['pw-new'] => yuiytiy
+$_POST['pw-confirm'] => ukhkgh
+
+[12/15/2015 11:46:11 am]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 01:29:13 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => pc20011196
+
+[12/15/2015 01:29:22 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/15/2015 01:29:28 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => pc20011196
+
+[12/15/2015 01:29:33 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => pc20011196
+
+[12/15/2015 01:40:55 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 01:50:39 pm]
+http://ubuntu14/pa/survey?action=postFormData&u=anthony.poon&uid=2&r=self
+$_POST['fieldName'] => multi_a_respon_name_1
+$_POST['value'] => f
+
+[12/15/2015 01:55:42 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => sdfgsdf
+$_POST['pwConfirm'] => gsdfg
+
+[12/15/2015 01:56:23 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => 
+$_POST['pwConfirm'] => gsdfg
+
+[12/15/2015 01:56:24 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => 
+$_POST['pwConfirm'] => 
+
+[12/15/2015 01:56:26 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => dfgdfg
+$_POST['pwConfirm'] => 
+
+[12/15/2015 01:56:28 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => dfgdfg
+$_POST['pwConfirm'] => d
+
+[12/15/2015 01:56:30 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => dfg
+$_POST['pwConfirm'] => d
+
+[12/15/2015 01:57:11 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => dsfgsd
+$_POST['pwConfirm'] => g
+
+[12/15/2015 01:57:57 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => sdfgdf
+$_POST['pwConfirm'] => dfg
+
+[12/15/2015 01:58:30 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => asfsdf
+$_POST['pwConfirm'] => asdf
+
+[12/15/2015 01:58:41 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => asdfsd
+$_POST['pwConfirm'] => asdf
+
+[12/15/2015 01:58:43 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => antpun
+$_POST['pwConfirm'] => antpun
+
+[12/15/2015 03:45:51 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 03:45:55 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/15/2015 03:54:07 pm]
+http://ubuntu14/pa/setting?action=ajaxPW
+$_POST['pwNew'] => ds
+$_POST['pwConfirm'] => d
+
+[12/15/2015 03:54:42 pm]
+http://ubuntu14/pa/setting?action=ajaxSelfPW
+$_POST['pwNew'] => d
+$_POST['pwConfirm'] => d
+
+[12/15/2015 05:05:39 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/15/2015 05:05:44 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/16/2015 10:05:49 am]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/16/2015 10:05:52 am]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/16/2015 02:47:54 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => password
+
+[12/16/2015 02:47:58 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/16/2015 03:10:20 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+
+[12/16/2015 03:10:37 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+
+[12/16/2015 03:11:41 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+
+[12/16/2015 03:11:59 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+
+[12/16/2015 03:12:12 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+
+[12/16/2015 03:13:31 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => dfgsdfgfd
+$_POST['pwConfirm'] => g
+
+[12/16/2015 03:18:53 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => dfghgfhgf
+$_POST['pwConfirm'] => gfg
+
+[12/16/2015 03:19:42 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sdfgdfg
+$_POST['pwConfirm'] => ddf
+
+[12/16/2015 03:20:31 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => hjkj
+$_POST['pwConfirm'] => hkhk
+
+[12/16/2015 03:20:34 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => hjkjasdfsdfs
+$_POST['pwConfirm'] => hkhk
+
+[12/16/2015 03:21:25 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => kkkkk
+$_POST['pwConfirm'] => kkkkk
+
+[12/16/2015 03:59:18 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sdfadsf
+$_POST['pwConfirm'] => asfsdf
+
+[12/16/2015 04:06:01 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sfsdfa
+$_POST['pwConfirm'] => sdfasfs
+
+[12/16/2015 04:08:03 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => asdfsdf
+$_POST['pwConfirm'] => sdfasddf
+
+[12/16/2015 04:08:15 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => gsdfgsdfg
+$_POST['pwConfirm'] => sdgdfg
+
+[12/16/2015 05:10:22 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => gsdfgsdfg
+$_POST['pwConfirm'] => sdgdfg
+
+[12/16/2015 05:15:50 pm]
+http://ubuntu14/pa/login?action=submitLogin
+$_POST['username'] => anthony.poon
+$_POST['password'] => antpun
+
+[12/16/2015 05:16:06 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sdfasdfdasf
+$_POST['pwConfirm'] => asdfasdf
+
+[12/16/2015 05:17:41 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => asfasd
+$_POST['pwConfirm'] => fasdfs
+
+[12/16/2015 05:18:38 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => dfghgf
+$_POST['pwConfirm'] => hdfhg
+
+[12/16/2015 05:19:14 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => asdfasdf
+$_POST['pwConfirm'] => asdfsd
+
+[12/16/2015 05:19:59 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => asfsd
+$_POST['pwConfirm'] => fasdfs
+
+[12/16/2015 05:21:28 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => asdfsd
+$_POST['pwConfirm'] => fsdf
+
+[12/16/2015 05:21:49 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => gfdhdgfh
+$_POST['pwConfirm'] => h
+
+[12/16/2015 05:27:41 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sdfasf
+$_POST['pwConfirm'] => asdfa
+
+[12/16/2015 05:29:21 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sgfsdg
+$_POST['pwConfirm'] => gf
+
+[12/16/2015 05:29:24 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => antpuin
+$_POST['pwConfirm'] => gf
+
+[12/16/2015 05:29:30 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => password
+$_POST['pwConfirm'] => password
+
+[12/16/2015 05:42:02 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => amy.cao
+$_POST['pwNew'] => sgfsdg
+$_POST['pwConfirm'] => sdgfd
+
+[12/16/2015 05:43:07 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => ghdfgh
+$_POST['pwConfirm'] => dfgh
+
+[12/16/2015 05:43:28 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => anthony.poon
+$_POST['pwNew'] => dfghgf
+$_POST['pwConfirm'] => gfhf
+
+[12/16/2015 05:43:55 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => anthony.poon
+$_POST['pwNew'] => dgsd
+$_POST['pwConfirm'] => gdsfgsd
+
+[12/16/2015 05:44:07 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => frankie.chung
+$_POST['pwNew'] => sdfgsdg
+$_POST['pwConfirm'] => sdgd
+
+[12/16/2015 05:44:10 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => anthony.poon
+$_POST['pwNew'] => dgdfg
+$_POST['pwConfirm'] => sdgd
+
+[12/16/2015 05:44:14 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => han.cao
+$_POST['pwNew'] => ssssss
+$_POST['pwConfirm'] => ssssss
+
+[12/16/2015 05:45:03 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => han.cao
+$_POST['pwNew'] => fasf
+$_POST['pwConfirm'] => asfs
+
+[12/16/2015 05:45:17 pm]
+http://ubuntu14/pa/setting?action=ajaxAdminPW
+$_POST['userId'] => han.cao
+$_POST['pwNew'] => sadfs
+$_POST['pwConfirm'] => fsdfs
+

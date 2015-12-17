@@ -5963,3 +5963,11 @@ Call Stack: prepare => updateData => clearA => callHook => require_once
 bindParam: :username => collins.qian
 bindValue: :uid => 1
 bindValue: :value => NULL
+
+[Calling Function: updateData] [Session user: anthony.poon] [12/15/2015 01:50:39 pm]
+INSERT INTO pa_part_a SET `question_no` = :qid , `form_username` = :username , `survey_uid` = :uid, `respon_name` = :value ON DUPLICATE KEY UPDATE `respon_name` = :value
+Call Stack: prepare => updateData => postFormData => callHook => require_once
+bindValue: :username => anthony.poon
+bindValue: :uid => 2
+bindValue: :qid => 1
+bindValue: :value => f

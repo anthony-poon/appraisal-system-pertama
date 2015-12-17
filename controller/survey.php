@@ -28,7 +28,6 @@ class survey extends privilegedZone {
             $query = $this->dbconnection->prepare($statement);
             $query->execute();
             $result = $query->fetch(PDO::FETCH_ASSOC);
-            var_dump($result);
             if (!empty($result['username'])) {
                 $seed = str_split('abcdefghijklmnopqrstuvwxyz'
                          .'0123456789');
