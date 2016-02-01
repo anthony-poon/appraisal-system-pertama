@@ -47,6 +47,11 @@ function callHook() {
         $controllerName = DEFAULT_CONTROLLER;
         $action = DEFAULT_ACTION;
     } else {
+        foreach ($_GET as $getVar) {
+            if (!preg_match("/^([\\\\\/0-9a-zA-Z\.,\-_\s\!\(\)])*$/", $getVar)) {
+                throw new Exception("Illegal query get variable: ".$getVar);
+            }
+        }
         $param = $_GET;
         $pathToController = ROOT . DS . 'controller' . DS;
         $urlArray = array();
@@ -66,6 +71,7 @@ function callHook() {
             $action = DEFAULT_ACTION;
         }
     }
+    $controllerName = ucfirst($controllerName)."Controller";
     if (file_exists($pathToController . $controllerName . ".php")) {
         require_once($pathToController . $controllerName . ".php");
         $controller = new $controllerName;

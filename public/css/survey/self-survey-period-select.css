@@ -1,0 +1,13 @@
+#period-select.wrapper {
+    display: flex;
+    width: 60%;
+    margin: 100px auto;
+}
+
+#period-select.wrapper #label{
+    width: 200px;
+}
+
+#period-select.wrapper select{
+    width: 500px;
+}

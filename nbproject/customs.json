@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "charset": {
+            "context": "meta"
+        },
+        "qid": {
+            "context": "div"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+#reset-pw-box {
+    width: 60%;
+    margin: 150px auto 0 auto;
+}
+
+#reset-pw-box .wrapper {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin: 25px auto;    
+}
+
+#reset-pw-box .wrapper .label{
+    width: 150px;
+}
+
+#reset-pw-box .alert {
+    color: red;
+}
+
+input{
+    width: 250px;
+    height: 25px;
+}
+
+
+#submit{
+    margin-top: 40px;
+    width: 90px;
+    height: 35px;
+    border: 2px #2196F3 solid;
+    color: #2196F3;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+#submit:hover{
+    background-color: #2196F3;
+    color: white;
+}

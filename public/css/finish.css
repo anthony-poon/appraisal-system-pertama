@@ -1,0 +1,64 @@
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: open-sans;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+.wrapper{
+    position: relative;
+    width : 600px;
+    height: 450px;
+    margin: 80px auto;
+    background-color: #2196F3;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-family: roboto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+.wrapper #top-section {
+    height: 65%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper #top-section #circle {
+    width: 150px;
+    height: 150px;
+    background: white;
+    -moz-border-radius: 150px;
+    -webkit-border-radius: 150px;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper #text {
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.wrapper #back {
+    padding: 5px 20px;
+    border: 2px white solid;
+    transition: 1s background-color, 1s color;
+    color: white;
+    text-decoration: none;
+}
+
+.wrapper #back:hover {
+    background-color: white;
+    color: #2196F3;
+    //cursor: pointer;
+    
+}

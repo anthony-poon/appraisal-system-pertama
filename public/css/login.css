@@ -1,31 +1,87 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jan 28, 2015, 5:44:10 PM
-    Author     : anthony.poon
-*/
-.contentWrapper {
-    width : 40%;
-    margin: 200px auto;
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: open-sans;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+#back-plate {
+    position: fixed;
+    width: 100%;
+    top: 0%;
+    height: 40%;
+    background-color: #2196F3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+}
+.wrapper{
+    position: relative;
+    z-index: 1;
+    width : 600px;
+    height: 500px;
+    margin: 100px auto;
     vertical-align: middle;
     background-color: white;
     border: 2px;
     text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-family: open-sans;
+    
 }
 
-
-
-.contentWrapper *{
-    margin: 20px;
+.wrapper form {
+    height: 100%;
+    width: 100%;
 }
 
-.title {
+.wrapper .error_message {
+    position: absolute;
+    top: 40px;
+    color: #F44336;
+    width: 100%;
     text-align: center;
-	font-size: 15pt;
-	font-family: calibri;
-	text-decoration:underline;
-	font-weight: bold;
+}
+
+.wrapper img{
+    padding: 90px 0 30px 0;
+}
+
+.wrapper .input-row{
+    padding: 10px;
+}
+
+.wrapper span{
+    padding-right: 40px;
+}
+
+.wrapper #submit-button {
+    background-color: #2bbbad;
+    color: white;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    padding: 15px 60px;
+    border: 0;
+    margin-top: 30px;
+    transition: 0.5s transform;
+}
+
+.wrapper #submit-button:hover {
+    transform: scale(1.15);
+}
+.title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 15pt;
+    font-family: calibri;
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+input[type='text'], input[type='password'] {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    height: 30px;
+    background-color: transparent;
+    border-bottom: 2px rgb(55,55,55) solid;
 }

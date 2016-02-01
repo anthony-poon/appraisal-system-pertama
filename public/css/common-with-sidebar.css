@@ -1,11 +1,18 @@
 @font-face {
-    font-family: open-san;
+    font-family: roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: open-sans;
     src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 html, body {    
     height: 100%;
     width: 100%;
+    font-family: roboto;
+    
 }
 
 body {
@@ -14,14 +21,14 @@ body {
 }
 
 #sidebar.wrapper {
-    font-family: open-san;
     width: 400px;
     color: white;
-    background-color: #1A1A1C;
+    
     display: flex;
     flex-direction: column;
     position: fixed;
     height: 100%;
+    box-shadow: 0 16px 28px 0 rgba(0,0,0, 0.8);
 }
 
 #sidebar.wrapper>div{
@@ -30,12 +37,14 @@ body {
 }
 
 #sidebar.wrapper #username.wrapper {
+    background-color: #2196F3;
     width: 100%;
     height: 200px;
     font-size: 34px;
     display: flex;
     margin: 0 auto;
     align-items: center;
+    border-bottom: 2px rgb(200,200,200) solid;
 }
 
 #sidebar.wrapper #username.wrapper div{
@@ -49,16 +58,27 @@ body {
 
 #sidebar #menu {
     flex-grow: 1;
-    width: 70%;
+    width: 100%;
     margin: 0 0 0 auto;
 }
 
 #sidebar #menu .selection {
-    height: 50px;
+    height: 80px;
+    border-collapse: collapse;
+    //border-top: 2px rgb(200,200,200) solid;
+    color: #2196F3;
+    background-color: white;
+    border-bottom: 2px rgb(200,200,200) solid;
     display: flex;
     font-size: 16px;
     align-items: center;
-    margin-left: 20px;
+    padding-left: 140px;
+    //justify-content: center;
+}
+
+#sidebar #menu .selection:hover {
+    background-color: #2196F3;
+    color: white;
     //justify-content: center;
 }
 
@@ -66,4 +86,15 @@ body {
     flex-grow: 1;
     height: 100%;
     margin-left: 400px;
+}
+
+input[type=text], input[type=password] {
+    border: 0;
+    border-bottom: 2px #999999 solid;
+}
+
+select {
+    border: 0;
+    border-bottom: 2px #999999 solid;   
+    height: 30px;
 }

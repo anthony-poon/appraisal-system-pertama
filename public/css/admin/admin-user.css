@@ -1,0 +1,117 @@
+
+
+#content.wrapper {
+    font-family: roboto;
+}
+
+#user-dropdown {
+    height: 150px;
+    display: flex;
+    //justify-content: center;
+    align-items: flex-end;
+}
+
+#user-dropdown .wrapper{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#user-dropdown .wrapper select{
+    margin-left: 30px;
+}
+
+#user-detail #message{
+    opacity: 0;
+}
+
+#user-detail .wrapper{
+    width: 60%;
+    margin: 25px auto;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+#user-detail .wrapper .label{
+    width: 200px;
+}
+
+#user-detail .wrapper input{
+    width: 250px;
+    height: 25px;    
+}
+
+#user-detail #submit-button{
+    width: 90px;
+    height: 35px;
+    border: 2px #2196F3 solid;
+    color: #2196F3;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+#user-detail #submit-button:hover{
+    background-color: #2196F3;
+    color: white;
+}
+
+.switch{
+    position: relative;
+    width: 110px;
+    height: 35px;
+    border: 2px #999999 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.switch .inner-box{
+    height: 85%;
+    width: 95%;
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+}
+
+.switch .black-bar {
+    position: absolute;
+    background-color: black;
+    width: 26%;
+    height: 100%;
+    transition: all 1s;
+}
+
+.switch.true .black-bar {
+    right: 0%;
+    left: initial;
+}
+
+.switch.true .inner-box:after {
+    content: "Enabled";
+    margin: 0 auto 0 12px;
+    color: white;
+}
+
+.switch.false .inner-box:after {
+    content: "Disabled";
+    margin: 0 12px 0 auto;
+    color: rgb(250,250,250);
+}
+
+.switch.false .black-bar {
+    right: 75%;
+
+}
+
+.switch.true .inner-box{
+    background-color: #2196F3;
+}
+
+.switch.false .inner-box{
+    background-color: #CCCCCC;
+}

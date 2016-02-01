@@ -27,7 +27,7 @@ img{
 }
 
 .selectionTitle {
-    font-size : 50px;
+    font-size : 32px;
     font-weight: bold;
     width: 80%;
     margin-left: auto;
@@ -35,16 +35,11 @@ img{
 }
 
 .selectionTitle>div {
-    font-size : 20px;
+    font-size : 16px;
 }
 
-a {
-    color:graytext;
-    text-decoration: none;
-}
-
-a:visited {
-    color:graytext;
+.wrapper a {
+    color: rgb(68, 68, 68);
     text-decoration: none;
 }
 
@@ -53,21 +48,25 @@ a:visited {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    
     margin: 20px auto;
     width: 100%;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 150px;
+    height: 120px;
     background-color: white;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     position: relative;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 1s;
 }
 
-.box:hover {
-    background-color: #ffff66;
+.box:not(.disabled):hover {
+    background-color: #2196F3;
+    color: white;
 }
 
 .subSelection {

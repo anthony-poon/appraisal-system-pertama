@@ -2,10 +2,11 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: rgba(240,240,240,0.8);
 }
 
 body {
-    background-image: url(../img/steel.png);
+    //background-image: url(../img/steel.png);
     font: 12px/1.4 "Helvetica Neue", Arial, "Lucida Grande", Tahoma, Verdana, sans-serif;    
 }
 
@@ -18,23 +19,31 @@ body {
 }
 
 .header_bar {
-    padding: 15px 50px;
+    padding: 10px 0;
     margin-bottom: 40px;
     font-weight: bold;
     vertical-align: top;
     width: 100%;
     //height: 10%;
-    background-color: lightgray;
+    color: white;
+    background-color: #2196F3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+    display: flex;
+    align-items: flex-end;
 }
 
+.header_bar a{
+    color: white;
+}
 .header_bar .message {
     font-size: 20px;
-    display: inline-block;
-    width: 72%;
+    flex-grow: 1;
+    margin-left: 60px;
+    margin-bottom: 20px;
 }
 
 .header_bar .control_panel {
-    display : inline-block;
+    width: 200px;
 }
 
 .control_panel li {
