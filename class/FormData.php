@@ -246,6 +246,16 @@ class FormData {
         }
     }
     
+    function getStatus(){
+        $statement = "SELECT is_final_by_self, is_final_by_appraiser FROM pa_form_data WHERE (form_username = :username) AND (survey_uid = :uid)";
+        $query = $this->dbConnection->prepare($statement);        
+        $query->bindValue(':username', $this->username);
+        $query->bindValue(':uid', $this->uid);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
     function closeConnection() {
         $this->dbConnection = null;
     }

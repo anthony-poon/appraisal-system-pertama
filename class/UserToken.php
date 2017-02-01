@@ -93,7 +93,7 @@ class UserToken {
             }
             
             unset($result);
-            $statement = "SELECT username, user_full_name FROM pa_user WHERE appraiser_username = :username";
+            $statement = "SELECT username, user_full_name FROM pa_user WHERE (appraiser_username = :username) AND (is_active)";
             $query = $this->dbConnection->prepare($statement);
             $query->bindValue(':username', $this->username);
             $query->execute();
@@ -142,7 +142,7 @@ class UserToken {
             }
 
             unset($result);
-            $statement = "SELECT username, user_full_name FROM pa_user WHERE (countersigner_username_1 = :username)";
+            $statement = "SELECT username, user_full_name FROM pa_user WHERE (countersigner_username_1 = :username) AND (is_active)";
             $query = $this->dbConnection->prepare($statement);
             $query->bindValue(':username', $username);
             $query->execute();
@@ -155,7 +155,7 @@ class UserToken {
             }
             
             unset($result);
-            $statement = "SELECT username, user_full_name FROM pa_user WHERE (countersigner_username_2 = :username)";
+            $statement = "SELECT username, user_full_name FROM pa_user WHERE (countersigner_username_2 = :username) AND (is_active)";
             $query = $this->dbConnection->prepare($statement);
             $query->bindValue(':username', $username);
             $query->execute();

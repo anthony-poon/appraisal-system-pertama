@@ -106,11 +106,11 @@ function logHeader() {
 function logPOST() {
     if (!empty($_POST)) {
         $timeStamp = date('m/d/Y h:i:s a', time());
-        file_put_contents(TEMP.DS."logs".DS."post.log","[".$timeStamp."]\n", FILE_APPEND);
-        file_put_contents(TEMP.DS."logs".DS."post.log","http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\n", FILE_APPEND);
+        file_put_contents(TEMP."logs".DS."post.log","[".$timeStamp."]\n", FILE_APPEND);
+        file_put_contents(TEMP."logs".DS."post.log","http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\n", FILE_APPEND);
         foreach ($_POST as $varName => $value) {
             $str = "\$_POST['".$varName."'] => ".$value."\n";
-            file_put_contents(TEMP.DS."logs".DS."post.log",$str, FILE_APPEND);
+            file_put_contents(TEMP."logs".DS."post.log",$str, FILE_APPEND);
         }
         file_put_contents(TEMP.DS."logs".DS."post.log","\n", FILE_APPEND);
     }

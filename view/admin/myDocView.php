@@ -1,10 +1,10 @@
 <div id="content" class="wrapper">
     <div id="file-system">
         <?php
-        if (empty($param["folder"]) && empty($param["file"])) {
+        if (!empty($param["error_msg"])) {
             ?>
             <div class="wrapper">
-                You currently do not have any document to view.
+                <?php echo $param["error_msg"]; ?>
             </div>
         <?php } else { ?>
             <div class="wrapper">

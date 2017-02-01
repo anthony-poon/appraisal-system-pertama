@@ -212,7 +212,7 @@ $(window).load(function() {
         });
     }
     $.ajax({
-        url: 'survey?action=getFormData&u=' + user.userId + '&uid=' + user.uid +'&r=' + user.role,
+        url: 'surveyAjax?action=getFormData&u=' + user.userId + '&uid=' + user.uid +'&r=' + user.role,
         type: 'GET',
         dataType: 'json',
         success: function(ajaxData) {
@@ -229,13 +229,13 @@ $(window).load(function() {
                 $('.delete_button_d').hide();
                 $('#system_message').text('Your form was locked. Changes are not allowed at the moment.');
             } else if (user.role === 'app') {
-                if (form.isFinalByApp === '1') {
+                if (form.isFinalBySelf === '1' && form.isFinalByApp === '1') {
                     $('form :input').prop('disabled', true);
                     $('[class^=delete_button], [id^=plus_button]').hide();
                     $('#system_message').append('<div> The form had been submitted. Changes are not allowed. Please contact IT if amendment is needed. </div>');
                 }
             } else if (user.role === 'self') {
-                if (form.isFinalBySelf === '1') {
+                if (form.isFinalBySelf === '1' && form.isFinalByApp === '1') {
                     $('form :input').prop('disabled', true);
                     $('[class^=delete_button], [id^=plus_button]').hide();
                     $('#system_message').append('<div>The form had been submitted. Changes are not allowed. Please contact IT if amendment is needed. </div>');
@@ -325,7 +325,7 @@ $(window).load(function() {
     $('#plus_button_a').click(function() {
         var fieldName = $('#plus_button_a').attr('next');
         $.ajax({
-            url: 'survey?action=addPartAItem&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid,
+            url: 'surveyAjax?action=addPartAItem&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid,
             dataType: 'json',
             type: 'POST',
             data: {
@@ -341,7 +341,7 @@ $(window).load(function() {
     $('#plus_button_d').click(function() {
         var fieldName = $('#plus_button_d').attr('next');
         $.ajax({
-            url: 'survey?action=postFormData&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid,
+            url: 'surveyAjax?action=postFormData&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid,
             type: 'POST',
             data: {
                 "fieldName": fieldName,
@@ -356,7 +356,7 @@ $(window).load(function() {
     $('.delete_button_a').click(function() {
         var qid = $(this).attr('qid');
         $.ajax({
-            url: 'survey?action=clearA&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid + '&qid=' + qid,
+            url: 'surveyAjax?action=clearA&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid + '&qid=' + qid,
             type: 'DELETE',
             success: function() {
                 location.reload();
@@ -367,7 +367,7 @@ $(window).load(function() {
     $('.delete_button_d').click(function() {
         var qid = $(this).attr('qid');
         $.ajax({
-            url: 'survey?action=clearD&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid + '&qid=' + qid,
+            url: 'surveyAjax?action=clearD&u=' + user.userId + '&r=' + user.role + '&uid=' + user.uid + '&qid=' + qid,
             type: 'DELETE',
             success: function() {
                 location.reload();
@@ -656,7 +656,7 @@ $(window).load(function() {
         autosaveTimer = setTimeout(function(){
             $(triggeredElement).trigger("change");
             console.log("auto saved");
-        }, 5000);
+        }, 2000);
     });
     
     $(":input").change(function() {
@@ -683,7 +683,7 @@ $(window).load(function() {
                 grandTotal.update();
             }
             var updateDataAjax = $.ajax({
-                url: 'survey?action=postFormData&u=' + user.userId + '&uid=' + user.uid + '&r=' + user.role,
+                url: 'surveyAjax?action=postFormData&u=' + user.userId + '&uid=' + user.uid + '&r=' + user.role,
                 type: 'POST',
                 data: {
                     "fieldName": $(inputElement).attr('name'),

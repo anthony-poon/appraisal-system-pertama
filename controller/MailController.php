@@ -14,8 +14,6 @@
 class MailController {
     //put your code here
     function test() {       
-        $mailer = new mailFactory();
-        $result = $mailer->testing();
-        var_dump($result);
+        $mailer = new PhpMailerFactory();
     }
 }

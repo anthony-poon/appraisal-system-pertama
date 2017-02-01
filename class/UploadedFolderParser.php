@@ -4,7 +4,6 @@ class UploadedFolderParser {
     private $dir;
     private $stopRootingFolder = TRUE;
     public function __construct($inDir = NULL) {
-        
         $this->dir = UPLOAD_DIR.$inDir;
         // Prevent url injection by using ../
         if ($this->stopRootingFolder) {
@@ -12,6 +11,11 @@ class UploadedFolderParser {
                 throw new Exception("Illegal query string.");
             }
         }
+    }
+    
+    
+    public function isFileExist() {
+        return file_exists($this->dir);
     }
     
     public function isRootAFolder() {

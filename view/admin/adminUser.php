@@ -8,6 +8,7 @@
         })
         
         $("#status-button").click(function(){
+            logoutTimer.keepAlive();
             if ($("#user-detail").is(".enabled")) {
                 var username = $("#user-detail #username").val();
                 var statusAjax = $.ajax({
@@ -42,13 +43,18 @@
         });
         
         $("#list").change(function(){
+            logoutTimer.keepAlive();
+            $("#user-detail #username").val("");
+            $("#user-detail #email").val("");
             var selectedUser = {
                 username: $(this).find(":selected").attr("id"),
-                accStatus: $(this).find(":selected").attr("data-acc-status")
+                accStatus: $(this).find(":selected").attr("data-acc-status"),
+                email: $(this).find(":selected").attr("data-email")
             }
             $("#user-detail #username").val(selectedUser.username);
+            $("#user-detail #email").val(selectedUser.email);
             $("#user-detail").addClass("enabled");
-            $("#user-detail #new-pw, #old-pw").removeAttr("disabled");
+            $("#user-detail #new-pw, #old-pw, #email").removeAttr("disabled");
             $("#user-detail #new-pw, #old-pw").val("");
             if (selectedUser.accStatus === "1") {
                 $("#user-detail #status-button").removeClass("false");
@@ -60,21 +66,29 @@
         });
 
         $('#submit-button').click(function(evt){
+            logoutTimer.keepAlive();
             if ($("#user-detail").is(".enabled")) {
                 var userId = $("#user-detail #username").val();
-                var pwNew = $("#user-detail #new-pw").val();
-                var pwCon = $("#user-detail #old-pw").val();
+                var pwNew = String($("#user-detail #new-pw").val()).trim();
+                var pwCon = String($("#user-detail #old-pw").val()).trim();
+                var userEmail = String($("#user-detail #email").val()).trim();
                 var pwAjax = $.ajax({
-                    url: "admin?action=ajaxCatchFile&userId="+userId,
+                    url: "admin?action=ajaxPostChange&userId="+userId,
                     type: "POST",
                     dataType: "json",
                     data: {
                         pwNew: pwNew,
                         pwConfirm: pwCon,
+                        userEmail: userEmail
                     }
                 });
                 var lastTimeoutId = null;
                 pwAjax.done(function(json, textStatus){
+                    if (json.error === 0) {
+                        $("#user-detail #new-pw").val("")
+                        $("#user-detail #old-pw").val("")
+                        $("#list").find(":selected").attr("data-email", userEmail)
+                    }
                     clearTimeout(lastTimeoutId);
                     $("#message").html(json.msg);
                     $("#message").css("opacity" , "0");
@@ -100,7 +114,7 @@
                 <option></option>
                 <?php                    
                     foreach ($param["userDetail"] as $username => $detail) {
-                        echo "<option id='$username' data-acc-status='".$detail["is_active"]."'>".$username."</option>";
+                        echo "<option id='$username' data-email='".$detail["user_email"]."' data-acc-status='".$detail["is_active"]."'>".$username."</option>";
                     } 
                 ?>
             </select>
@@ -118,6 +132,9 @@
         </div>
         <div class="wrapper">
             <div class="label">Confirm password: </div><input id="old-pw" type="password" disabled>
+        </div>
+        <div class="wrapper">
+            <div class="label">Email: </div><input id="email" type='text' disabled>
         </div>
         <div class="wrapper">
             <div class="label">Account status: </div>

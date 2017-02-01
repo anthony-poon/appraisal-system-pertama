@@ -6,6 +6,7 @@
             }
         })
         $("#submit").click(function(evt){
+            logoutTimer.keepAlive();
             var pwAjax = $.ajax({
                 url: "admin?action=ajaxSelfPW",
                 type: "POST",

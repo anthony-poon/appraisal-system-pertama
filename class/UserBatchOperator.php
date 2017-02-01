@@ -100,7 +100,7 @@ class UserBatchOperator {
         if (empty($this->dbConnection)) {
             $this->dbConnection = new DbConnector();
         }
-        if (!$pwStr) {
+        if ($pwStr === "") {
             throw new Exception("Password cannot be empty.");
         } elseif (strcmp($pwStr, $pwConfirm) !== 0) {
             throw new Exception("Mismatched confirmation password.");
@@ -137,5 +137,32 @@ class UserBatchOperator {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_COLUMN);
         return $result;
+    }
+    
+    function getEmailByUsername($username){
+        if (empty($this->dbConnection)) {
+            $this->dbConnection = new DbConnector();
+        }
+        $statement = "SELECT user_email from pa_user WHERE username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(":username", $username);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_COLUMN);
+        return $result;
+    }
+    
+    function setEmailByUsername($username, $email) {
+        if (empty($this->dbConnection)) {
+            $this->dbConnection = new DbConnector();
+        }
+        $statement = "UPDATE pa_user set user_email = :user_email WHERE username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(":user_email", $email);
+        $query->bindValue(":username", $username);
+        $query->execute();
+        $errInfo = $this->dbConnection->errorInfo();
+        if (!$errInfo) {
+            throw new Exception($errInfo[2]);
+        }
     }
 }

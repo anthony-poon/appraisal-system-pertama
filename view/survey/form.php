@@ -5,7 +5,7 @@
             <li>During the completion of the Performance Appraisal form, you can exit anytime and all data input will be saved automatically.</li>
             <li>When all mandatory parts are completed, please press “<b>Submit</b>” button at the bottom of the page for submission and confirmation.</li>
             <li>Before the completion deadline, you can access the form for unlimited times and make adjustment before you re-submit the form.</li>
-            <li>For “<b>Appraisee</b>”, Part A, Part B1 and Part E are mandatory for all job grades; while for Deputy General Manager or above grade, please complete Part B2 as well. If no further comments in Part E, please remark as “No Comment” in the text box.</li>
+            <li>For “<b>Appraisee</b>”, Part A, Part B1 and Part E are mandatory for all job grades; while for Manager or above grade, please complete Part B2 as well. If no further comments in Part E, please remark as “No Comment” in the text box.</li>
             <li>For “<b>Appraising Officer</b>”, please complete Part A to Part E upon the self-assessment submitted by the appraisee.</li>
             <li>For “<b>Countersigning Officer</b>”, please read all parts and input alternative scores in Part A total and Part B total ONLY IF you disagree with the appraisal scores assessed by the Appraising Officer, so as to calibrate the final results for appraisee.</li>
         </ul>
@@ -122,7 +122,7 @@
             </div>
             <div class='part'>
                 <p>
-                    Scoring Scheme: Below Deputy General Manager Level - Part A (50%) + Part B (50%); Deputy General Manager Level and above - Part A (50%) + Part B1 (30%) + Part B2 (20%)
+                    Scoring Scheme: Below Manager Level - Part A (50%) + Part B (50%); Manager Level and above - Part A (50%) + Part B1 (30%) + Part B2 (20%)
                 </p>
                 <div class='part_title' id="part_a_title">
                     Part A: Accomplishments of Key Responsibilities or Objectives
@@ -463,7 +463,7 @@
             </div>
             <?php if ($form["is_senior"]) {?>
             <div class='part_title' id='part_b2_title'>
-                Part B2: This section is applicable to Senior Executive employee (Deputy General Manager level and above)
+                Part B2: This section is applicable to Senior Executive employee (Manager level and above)
             </div>
             <div class='part part_b' id='part_b2'>
                 <?php
@@ -1050,13 +1050,13 @@
         <div id='confirm-dialog'>
             <ul>
                 <li>
-                    You do NOT need to press submit to save; All valid entries are auto saved.
+                    Upon clicking this button, your completed information is deemed as confirmed and will submit to your Appraising Officer/Countersigning Officer for review
                 </li>
                 <li>
-                    Once submitted, you will NOT be able to to make changes.
+                    Do you still want to proceed?
                 </li>
                 <li>
-                    Do you want to proceed?
+                    (Note: All your partially or fully filled cells are auto-saved and there is no need for you to press any button for saving data.)
                 </li>
             </ul>
         </div>

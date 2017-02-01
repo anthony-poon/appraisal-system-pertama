@@ -178,19 +178,28 @@ class AdminController extends PrivilegedZone{
     
     function documentView($param = NULL){
         if (empty($param["path"])) {
+            // viewing root
             if ($this->user->isAdmin) {
+                // Admin can see root dir
                 $param["path"] = "";
             } else {
+                // User can see root/"username" dir
                 $param["path"] = $this->user->username;
             }
-            
+            $isViewingRoot = TRUE;
         } else {
+            // Inside the folder tree, parsing path
             $param["path"] = preg_replace("/!/", "/", $param["path"]);
+            $isViewingRoot = FALSE;
         }        
         $uploadRoot = new UploadedFolderParser($param["path"]);
-        if ($uploadRoot->isRootAFolder()) {
-            $param["folder"] = $uploadRoot->getFolders();
-            $param["file"] = $uploadRoot->getFiles();
+        if (!$uploadRoot->isFileExist()) {
+            
+            if ($isViewingRoot) {
+                $param["error_msg"] = "You currently do not have any document to view.";
+            } else {
+                $param["error_msg"] = "Error is query parameter. Check URL and file name.";
+            }
             $this->commonCSS = "common-with-sidebar.css";
             $this->header = "sidebar.php";
             $this->extraCSS = "admin/my-doc.css";
@@ -198,9 +207,22 @@ class AdminController extends PrivilegedZone{
             $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
             $this->view($param);
         } else {
-            header("Content-type: text/plain");
-            header("Content-Disposition: attachment; filename=".$uploadRoot->getRootName());
-            echo $uploadRoot->getRootContent();
+            if ($uploadRoot->isRootAFolder()) {
+                // If it is a folder structure
+                $param["folder"] = $uploadRoot->getFolders();
+                $param["file"] = $uploadRoot->getFiles();
+                $this->commonCSS = "common-with-sidebar.css";
+                $this->header = "sidebar.php";
+                $this->extraCSS = "admin/my-doc.css";
+                $this->content = "admin/myDocView.php";
+                $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
+                $this->view($param);
+            } else {
+                // If it is a single file, download
+                header("Content-type: text/plain");
+                header("Content-Disposition: attachment; filename=".$uploadRoot->getRootName());
+                echo $uploadRoot->getRootContent();
+            }
         }
     }
 }

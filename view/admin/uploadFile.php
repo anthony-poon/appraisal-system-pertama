@@ -9,6 +9,7 @@
         
         $("#status-button").click(function(){
             if ($("#user-detail").is(".enabled")) {
+                logoutTimer.keepAlive();
                 var username = $("#user-detail #username").val();
                 var statusAjax = $.ajax({
                     url: "admin?action=ajaxToggleStatus&userId="+username,
@@ -42,6 +43,7 @@
         });
         
         $("#list").change(function(){
+            logoutTimer.keepAlive();
             $("#upload-category :input, #upload :input").removeAttr("disabled");
             $("#upload-category :input, #upfile").val("");
             var username = $("#list :selected").html();
@@ -49,6 +51,7 @@
         });
 
         $('#submit-button').click(function(evt){
+            logoutTimer.keepAlive();
             var category = $("#upload-category :input").val();
             var filePath = $("#upfile").val();
             if (category !== "" && filePath !=="") {
