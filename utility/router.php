@@ -94,6 +94,12 @@ function callHook() {
 function logHeader() {
     $headerArray = apache_request_headers();
     $timeStamp = date('m/d/Y h:i:s a', time());
+	if (!file_exists(TEMP)) {
+		mkdir(TEMP);
+	}
+	if (!file_exists(TEMP."logs")) {
+		mkdir(TEMP."logs");
+	}
     file_put_contents(TEMP.DS."logs".DS."header.log","[".$timeStamp."]\n", FILE_APPEND);
 
     foreach ($headerArray as $header => $value) {
@@ -104,6 +110,12 @@ function logHeader() {
 }
 
 function logPOST() {
+	if (!file_exists(TEMP)) {
+		mkdir(TEMP);
+	}
+	if (!file_exists(TEMP."logs")) {
+		mkdir(TEMP."logs");
+	}
     if (!empty($_POST)) {
         $timeStamp = date('m/d/Y h:i:s a', time());
         file_put_contents(TEMP."logs".DS."post.log","[".$timeStamp."]\n", FILE_APPEND);
