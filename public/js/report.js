@@ -46,6 +46,6 @@ $(document).ready(function() {
 
     $('#get_excel').click(function(event) {
         event.preventDefault();                
-        window.open("report?action=dataDump&uid=" + user.uid,"_blank");
+        window.open("report?action=fullExcelReport&uid=" + user.uid,"_blank");
     });
 });

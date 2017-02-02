@@ -49,7 +49,8 @@ class SurveyController extends PrivilegedZone {
             $param['shouldShowInstuction'] = True;
             $_SESSION['isInstructionShown'] = True;
         }
-        
+        $reportData = new ReportData();
+        $param["previousSurvey"] = $reportData->getAvailablePeriod();
         $param["data"] = $formDetail;
         $this->view($param);
     }

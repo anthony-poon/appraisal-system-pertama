@@ -85,11 +85,18 @@ textarea {
     font-size: 14px;
 }
 
-#excel_button {
-    float: right;
-    font-size: 14px;
+.container-fluid {
+    
 }
 
+#button_section div {
+    padding: 5px 0;
+}
+
+
+#button_section #excel_button {
+    font-size: 14px;    
+}
 .collectionContainer {
     -webkit-flex-wrap: nowrap;
         -ms-flex-wrap: nowrap;

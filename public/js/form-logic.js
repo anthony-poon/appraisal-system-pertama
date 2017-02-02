@@ -1,5 +1,4 @@
 $(window).load(function() {
-    // !!!!!!!!!!!!!!!!! FIX TIME OUT!!!!!!!!!!!!!
     var notificationTimeout;
     
     function FormChecker() {
@@ -164,7 +163,6 @@ $(window).load(function() {
         }, "The score must be a valid numeric between 0 to 5");
     }
     
-    // !!!!!!!!!!!!!!! Need to check for strong or array later
     function notification(msg){
         clearTimeout(notificationTimeout);
         $("#notification #message ul li").remove();
@@ -194,7 +192,6 @@ $(window).load(function() {
     var checker = FormChecker();
     initChecker();
     
-    // Should make $form consist with $user later. Make it a property instead of function call
     var form = {};
     
     form.isDebugMode = ($("form").attr("data-debug") !== "0")
@@ -242,7 +239,7 @@ $(window).load(function() {
                 }
             }
             $('#excel_button').prop('disabled', false);
-
+            $('#other_survey_dropdown').prop('disabled', false);
             $.each(ajaxData, function(fieldName, dbValue) {
                 if (dbValue != 0 && dbValue != null) {
                     if ($.isArray(dbValue)) {

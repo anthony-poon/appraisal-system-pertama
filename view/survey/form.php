@@ -22,13 +22,33 @@
         </div>
     </div>
     <?php 
-        $form = $param["data"]; 
+        $form = $param["data"];
     ?>
     <form data-is-senior="<?php echo $form["is_senior"] ?>" data-debug="<?php if (!empty($param["debug"])) {echo $param["debug"];} else { echo 0; } ?>" data-id="<?php echo $param['u'] ?>" data-role="<?php echo $param['r'] ?>" data-uid="<?php echo $param['uid'] ?>" method="post" action="survey?action=finish&r=<?php echo $param['r'] ?>&u=<?php echo $param['u'] ?>&uid=<?php echo $param['uid'] ?>" id="survey" novalidate>
         <div id="header-bar"> </div>
+        
         <div class="contentWrapper">
-            <div>
-                <input type="button" id="excel_button" value="Print in Excel format">
+            <div id='button_section'>
+                <?php if (empty($param['child'])) { ?>
+                <div class="container-fluid">
+                    <div class="dropdown col-sm-3">
+                        <button id="other_survey_dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View previous survey
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <?php                                
+                                foreach ($param["previousSurvey"] as $surveyId => $previousSurvey) {
+                                    if ($param['uid'] != $surveyId) {
+                                        echo "<li data-uid='$surveyId'><a href='survey?action=renderForm&r=self&uid=$surveyId&u=".$param['u']."&child=true' target='_blank'>".$previousSurvey["survey_period"]."</a></li>";
+                                    }
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                    <div class='col-sm-2'>
+                        <input type="button" id="excel_button" class='btn btn-primary' value="Print in Excel format">
+                    </div>
+                </div>
+                <?php } ?>
             </div>
             <div class='logo'>
                 <img src="public/img/logo.png">

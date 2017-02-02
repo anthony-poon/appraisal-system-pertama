@@ -4,8 +4,8 @@ var logoutTimer = {
         window.location = 'login?action=logout';
     },
     init: function(){
-        clearTimeout(this.logoutTimer);
-        this.logoutTimer = setTimeout(this.logout, 1200000);
+        //clearTimeout(this.logoutTimer);
+        //this.logoutTimer = setTimeout(this.logout, 1200000);
         var pingTime = 900000;
         setInterval(function(){
             $.ajax({
@@ -14,10 +14,10 @@ var logoutTimer = {
             })
         }, pingTime);
     },
-    keepAlive: function(){
-        clearTimeout(this.logoutTimer);
-        this.logoutTimer = setTimeout(this.logout, 1200000);
-    }
+//    keepAlive: function(){
+//        clearTimeout(this.logoutTimer);
+//        this.logoutTimer = setTimeout(this.logout, 1200000);
+//    }
 }
 $(window).load(function(){
     logoutTimer.init();

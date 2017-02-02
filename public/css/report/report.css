@@ -20,6 +20,6 @@ table, th, td {
     text-align: center;
 }
 
-.alert {
+.missing_alert {
     background-color: #ff6666;
 }

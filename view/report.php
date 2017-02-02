@@ -110,16 +110,16 @@ and open the template in the editor.
                         <td>
                             <?php echo $data['part_a_b_total'] ?>
                         </td>
-                        <td class='<?php echo ($data['is_final_by_self']) ? '' : 'alert' ?>'>
+                        <td class='<?php echo ($data['is_final_by_self']) ? '' : 'missing_alert' ?>'>
                             <?php echo ($data['is_final_by_self']) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td class='<?php echo ($data['is_final_by_appraiser']) ? '' : 'alert' ?>'>
+                        <td class='<?php echo ($data['is_final_by_appraiser']) ? '' : 'missing_alert' ?>'>
                             <?php echo ($data['is_final_by_appraiser']) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td class='<?php echo ($data['is_final_by_counter1']) ? '' : 'alert' ?>'>
+                        <td class='<?php echo ($data['is_final_by_counter1']) ? '' : 'missing_alert' ?>'>
                             <?php echo ($data['is_final_by_counter1']) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td class='<?php echo ($data['is_final_by_counter2']) ? '' : 'alert' ?>'>
+                        <td class='<?php echo ($data['is_final_by_counter2']) ? '' : 'missing_alert' ?>'>
                             <?php echo ($data['is_final_by_counter2']) ? 'Yes' : 'No'; ?>
                         </td>
                         <?php if ($this->user->isAdmin) { ?>
