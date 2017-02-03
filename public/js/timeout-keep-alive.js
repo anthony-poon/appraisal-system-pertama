@@ -13,11 +13,7 @@ var logoutTimer = {
                 cache: false
             })
         }, pingTime);
-    },
-//    keepAlive: function(){
-//        clearTimeout(this.logoutTimer);
-//        this.logoutTimer = setTimeout(this.logout, 1200000);
-//    }
+    }
 }
 $(window).load(function(){
     logoutTimer.init();

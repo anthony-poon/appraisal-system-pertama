@@ -57,11 +57,11 @@ class PhpMailerFactory {
         
         $timeStamp = date('m/d/Y h:i:s a', time());
         if(!$this->mailer->send()) {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
-            file_put_contents(LOG."mail.log", "Message could not be sent.\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
+            file_put_contents(LOG."mail.log", "Message could not be sent. ", FILE_APPEND);
             file_put_contents(LOG."mail.log", $this->mailer->ErrorInfo."\n", FILE_APPEND);
         } else {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
             if (is_array($to)) {
                 file_put_contents(LOG."mail.log", "Message sent to ".implode(", " , $to).".\n", FILE_APPEND);
             } else {
@@ -97,11 +97,11 @@ class PhpMailerFactory {
         
         $timeStamp = date('m/d/Y h:i:s a', time());
         if(!$this->mailer->send()) {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
-            file_put_contents(LOG."mail.log", "Message could not be sent.\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
+            file_put_contents(LOG."mail.log", "Message could not be sent. ", FILE_APPEND);
             file_put_contents(LOG."mail.log", $this->mailer->ErrorInfo."\n", FILE_APPEND);
         } else {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
             if (is_array($to)) {
                 file_put_contents(LOG."mail.log", "Message sent to ".implode(", " , $to).".\n", FILE_APPEND);
             } else {
@@ -135,11 +135,11 @@ class PhpMailerFactory {
         
         $timeStamp = date('m/d/Y h:i:s a', time());
         if(!$this->mailer->send()) {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
-            file_put_contents(LOG."mail.log", "Message could not be sent.\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
+            file_put_contents(LOG."mail.log", "Message could not be sent. ", FILE_APPEND);
             file_put_contents(LOG."mail.log", $this->mailer->ErrorInfo."\n", FILE_APPEND);
         } else {
-            file_put_contents(LOG."mail.log","[".$timeStamp."]\n", FILE_APPEND);
+            file_put_contents(LOG."mail.log","[".$timeStamp."] ", FILE_APPEND);
             if (is_array($to)) {
                 file_put_contents(LOG."mail.log", "Message sent to ".implode(", " , $to).".\n", FILE_APPEND);
             } else {

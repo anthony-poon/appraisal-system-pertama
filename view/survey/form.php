@@ -31,7 +31,7 @@
             <div id='button_section'>
                 <?php if (empty($param['child'])) { ?>
                 <div class="container-fluid">
-                    <div class="dropdown col-sm-3">
+                    <div class="dropdown">
                         <button id="other_survey_dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View previous survey
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
@@ -43,8 +43,6 @@
                                 }
                             ?>
                         </ul>
-                    </div>
-                    <div class='col-sm-2'>
                         <input type="button" id="excel_button" class='btn btn-primary' value="Print in Excel format">
                     </div>
                 </div>
@@ -1063,7 +1061,7 @@
             <div>
                 <input type='checkbox' id='confirm-checkbox'> I have read and agreed with the completed parts
             </div>
-            <div id='submit-button' class='disabled'>
+            <div id='submit-button' class='btn disabled'>
                 Confirm & Submit
             </div>
         </div>

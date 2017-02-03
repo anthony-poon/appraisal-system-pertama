@@ -658,7 +658,6 @@ $(window).load(function() {
     
     $(":input").change(function() {
         var inputElement = this;
-        logoutTimer.keepAlive();
         if (checker.isValid(inputElement)) {
             var value = $.trim($(inputElement).val());
             if ($(inputElement).is("#part_a .weight, .a_score")) {
