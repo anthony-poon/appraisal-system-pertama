@@ -23,7 +23,7 @@ class ReportData {
     }
     
     function getScoreReport() {
-        $statement = "SELECT form.form_username, user.is_active, form.survey_uid, period.survey_period, staff_name, part_a_total"
+        $statement = "SELECT form.form_username, user.is_active, form.survey_uid, period.survey_period, form.staff_name, part_a_total"
                 . ", part_b_total, part_a_b_total "
                 . "FROM pa_form_data as form "
                 . "LEFT JOIN pa_form_period as period ON "

@@ -216,7 +216,7 @@ class ExcelReport {
         $rowOffSet++;
         foreach ($userArray as $username) {
             $colOffSet = 0;
-            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getStaffName($username));
             foreach ($periodArray as $periodName) {
                 $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getPartA($username, $periodName));
             }
@@ -233,7 +233,7 @@ class ExcelReport {
         $rowOffSet++;
         foreach ($userArray as $username) {
             $colOffSet = 0;
-            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getStaffName($username));
             foreach ($periodArray as $periodName) {
                 $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getPartB($username, $periodName));
             }
@@ -250,7 +250,7 @@ class ExcelReport {
         $rowOffSet++;
         foreach ($userArray as $username) {
             $colOffSet = 0;
-            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getStaffName($username));
             foreach ($periodArray as $periodName) {
                 $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getTotal($username, $periodName));
             }

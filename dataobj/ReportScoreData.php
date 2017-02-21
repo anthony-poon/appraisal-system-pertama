@@ -55,6 +55,14 @@ class ReportScoreData {
         }
     }
     
+    public function getStaffName($username) {
+        if (isset($this->staffName[$username])) {
+            return $this->staffName[$username];
+        } else {
+            return null;
+        }
+    }
+    
     public function getUsername() {
         return $this->username;
     }
