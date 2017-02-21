@@ -21,7 +21,27 @@ class ReportData {
     function __construct() {
         $this->dbConnection = new DbConnector();        
     }
-
+    
+    function getScoreReport() {
+        $statement = "SELECT form_username, data.survey_uid, period.survey_period, staff_name, part_a_total"
+                . ", part_b_total, part_a_b_total "
+                . "FROM pa_form_data as data "
+                . "LEFT JOIN pa_form_period as period ON "
+                . "data.survey_uid = period.uid "
+                . "WHERE data.survey_uid IN (SELECT * FROM ("
+                . "SELECT uid from pa_form_period "
+                . "ORDER BY uid DESC "
+                . "LIMIT 10) as sub1)";
+        $query = $this->dbConnection->prepare($statement);
+        $query->execute();
+        $returnArray = array();
+        $data = new ReportScoreData();
+        while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+            $data->addEntry($result["form_username"], $result["staff_name"], $result["survey_period"], $result["part_a_total"], $result["part_b_total"], $result["part_a_b_total"]);
+        }
+        return $data;
+    }
+    
     function getSubmittedSurveyIndex($uid) {
         $statement = "SELECT form_username FROM pa_form_data WHERE (survey_uid = :uid)";
         $query = $this->dbConnection->prepare($statement);

@@ -34,6 +34,9 @@ function autoloader($className) {
     if (file_exists(ROOT . DS . 'class' . DS . $className . '.php')) {
         require_once(ROOT . DS . 'class' . DS . $className . '.php');
         return true;
+    } else if (file_exists(ROOT . DS . 'dataobj' . DS . $className . '.php')) {
+        require_once(ROOT . DS . 'dataobj' . DS . $className . '.php');
+        return true;
     } else {
         // Error: Controller Class not found
         return false;

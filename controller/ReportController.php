@@ -76,6 +76,7 @@ class ReportController extends PrivilegedZone {
     function fullExcelReport($param = null) {
         $report = new ExcelReport($param["uid"]);
         $report->generateRawDataSheet();
+        $report->generateScoreSheet();
         $report->generateTopAndBottom();        
         $report->generateByOfficeDepartment();
         $report->generateByOfficeByScore();

@@ -16,8 +16,7 @@ class ExcelReport {
     private $workbook;
     private $uid;
     private $summary;
-    private $goalData;
-    
+    private $reportData;
     public function __construct($uid) {
         require_once(ROOT . DS . 'plugin/PHPExcel.php');
         require_once(ROOT . DS . 'plugin/PHPExcel/IOFactory.php');
@@ -27,11 +26,11 @@ class ExcelReport {
             ->getAlignment()
             ->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
         $this->workbook->removeSheetByIndex(0);
-        $reportData = new ReportData();
+        $this->reportData = new ReportData();
         $userOperator = new UserBatchOperator();
         $emptySurvey = $userOperator->getEmptyUserData($uid);
         $populatedData = $this->populateEmptydata($emptySurvey);
-        $this->summary = array_merge($reportData->getFormSummary($uid), $populatedData);
+        $this->summary = array_merge($this->reportData->getFormSummary($uid), $populatedData);
 
         unset($this->summary['hirotaka.suzuki']);
         unset($this->summary['setsuo.suzuki']);
@@ -195,6 +194,69 @@ class ExcelReport {
             $sheet->getStyleByColumnAndRow($colOffSet++, $rowOffSet)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
             $rowOffSet += 1;
         }
+        for ($i = 0; $i <= $colOffSet; $i ++) {
+            $sheet->getColumnDimensionByColumn($i)->setAutoSize(TRUE);
+        }
+    }
+    
+    public function generateScoreSheet() {
+        $sheet = $this->workbook->createSheet();
+        $sheet->setTitle("Score Sheet");
+        /* @var $data ReportScoreData */
+        $data = $this->reportData->getScoreReport();
+        $periodArray = $data->getPeriodName();
+        $userArray = $data->getUsername();
+        $rowOffSet = 1;
+        $colOffSet = 0;
+        $sheet->setCellValueByColumnAndRow($colOffSet, $rowOffSet++, "Part A score");
+        $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, "Name");        
+        foreach ($periodArray as $header) {
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $header);
+        }
+        $rowOffSet++;
+        foreach ($userArray as $username) {
+            $colOffSet = 0;
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            foreach ($periodArray as $periodName) {
+                $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getPartA($username, $periodName));
+            }
+            $rowOffSet += 1;
+        }
+        
+        $rowOffSet += 1;
+        $colOffSet = 0;
+        $sheet->setCellValueByColumnAndRow($colOffSet, $rowOffSet++, "Part B score");
+        $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, "Name");        
+        foreach ($periodArray as $header) {
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $header);
+        }
+        $rowOffSet++;
+        foreach ($userArray as $username) {
+            $colOffSet = 0;
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            foreach ($periodArray as $periodName) {
+                $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getPartB($username, $periodName));
+            }
+            $rowOffSet += 1;
+        }
+        
+        $rowOffSet += 1;
+        $colOffSet = 0;
+        $sheet->setCellValueByColumnAndRow($colOffSet, $rowOffSet++, "Total score");
+        $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, "Name");        
+        foreach ($periodArray as $header) {
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $header);
+        }
+        $rowOffSet++;
+        foreach ($userArray as $username) {
+            $colOffSet = 0;
+            $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $username);
+            foreach ($periodArray as $periodName) {
+                $sheet->setCellValueByColumnAndRow($colOffSet++, $rowOffSet, $data->getTotal($username, $periodName));
+            }
+            $rowOffSet += 1;
+        }
+        
         for ($i = 0; $i <= $colOffSet; $i ++) {
             $sheet->getColumnDimensionByColumn($i)->setAutoSize(TRUE);
         }
