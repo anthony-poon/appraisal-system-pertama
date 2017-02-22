@@ -2,7 +2,6 @@
     $(window).load(function(){
         $("#sub-button").click(function(evt){
             evt.preventDefault();
-            logoutTimer.keepAlive();
             var pwAjax = $.ajax({
                 url: "admin?action=ajaxSelfPW",
                 type: "POST",
