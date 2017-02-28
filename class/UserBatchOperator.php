@@ -196,6 +196,21 @@ class UserBatchOperator {
             throw new Exception($errInfo[2]);
         }
     }
+    
+    public function getParticipatedPeriod($username) {
+        if (empty($this->dbConnection)) {
+            $this->dbConnection = new DbConnector();
+        }
+        $statement = "SELECT survey_uid, survey_period FROM `pa_form_data` WHERE form_username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(":username", $username);
+        $query->execute();
+        $returnArray = array();
+        while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+            $returnArray[$result["survey_uid"]] = $result["survey_period"];
+        }
+        return $returnArray;
+    }
 
     public function updateUser($user) {
         /* @var $user User */
@@ -240,5 +255,8 @@ class UserBatchOperator {
         $query->bindValue(":is_active", $user->getIsActive());
         $query->bindValue(":is_hidden", $user->getIsHidden());
         $query->execute();
+        
+        $statement = "(SELECT MAX(uid) FROM pa_form_period WHERE is_active)";
+        
     }
 }

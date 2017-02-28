@@ -51,7 +51,18 @@ class SurveyController extends PrivilegedZone {
         }
         $reportData = new ReportData();
         $param["previousSurvey"] = $reportData->getAvailablePeriod();
+        $userFactory = new UserBatchOperator();
+        $param["available_uid"] = $userFactory->getParticipatedPeriod($this->user->username);
+        var_dump($param["available_uid"]);
         $param["data"] = $formDetail;
+        $this->view($param);
+    }
+    
+    function viewOnly($param = null) {
+        $this->extraCSS = array("survey/form.css", "jquery-ui.css");
+        $this->content = "survey/form_view_only.php";
+        $this->header = "surveyHeader.php";
+        $param["data"] = $data->getFormData();
         $this->view($param);
     }
    

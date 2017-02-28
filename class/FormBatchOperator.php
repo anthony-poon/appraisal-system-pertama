@@ -51,5 +51,5 @@ class FormBatchOperator {
         } else {
             return $error;
         }
-    }    
+    }
 }

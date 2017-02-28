@@ -36,9 +36,9 @@
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <?php                                
-                                foreach ($param["previousSurvey"] as $surveyId => $previousSurvey) {
-                                    if ($param['uid'] != $surveyId) {
-                                        echo "<li data-uid='$surveyId'><a href='survey?action=renderForm&r=self&uid=$surveyId&u=".$param['u']."&child=true' target='_blank'>".$previousSurvey["survey_period"]."</a></li>";
+                                foreach ($param["available_uid"] as $id => $periodName) {
+                                    if ($param['uid'] != $id) {
+                                        echo "<li data-uid='$id'><a href='survey?action=renderForm&r=self&uid=$id&u=".$param['u']."&child=true' target='_blank'>".$periodName."</a></li>";
                                     }
                                 }
                             ?>
