@@ -26,6 +26,11 @@
                 <span class='option-text'>
                     <?php echo $user->getStaffName(); ?>
                 </span>
+                <?php 
+                    if ($user->getIsAdmin()) {
+                        echo "<span class='label label-primary'>Admin</span>";
+                    }
+                ?>
                 <i class="icon-right fa fa-chevron-right" aria-hidden="true"></i>
             </a>
         </div>
