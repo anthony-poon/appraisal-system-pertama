@@ -50,81 +50,70 @@ and open the template in the editor.
             <tr>
                 <th>Office</th><th>Department</th><th>Position</th><th>Username</th><th>Seniority</th>
                 <th>Appraising Officer</th><th>Countersigning Officer</th>
-                <th>Join Date</th><th>Part A</th><th>Part B1</th>
-                <th>Part B2</th><th>Part A Total</th>
-                <th>Part B Total</th><th>Combined Score</th><th>Submitted by Appraisee</th><th>Submitted by Appraising Officer</th><th>Confirmed by Countersigning Officer 1</th>
+                <th>Part A</th>
+                <th>Part B </th><th>Total</th><th>Submitted by Appraisee</th><th>Submitted by Appraising Officer</th><th>Confirmed by Countersigning Officer 1</th>
                 <th>Confirmed by Countersigning Officer 2</th><?php if ($this->user->isAdmin) { ?><th>Form Locked</th> <?php } ?>
             </tr>
             <?php 
-            if (!empty($param['data'])) {                 
-                $arrayStaffOffice = arrayGetColumn($param['data'], 'staff_office');
-                $arrayStaffDepartment = arrayGetColumn($param['data'], 'staff_department');
-                $arrayIsSenior = arrayGetColumn($param['data'], 'is_senior');
-                //Cannot use due to php version
-                //array_multisort(array_column($param['data'], 'staff_office'), array_column($param['data'], 'staff_department'), array_column($param['data'], 'is_senior'), SORT_DESC,$param['data']);
-                array_multisort($arrayStaffOffice, $arrayStaffDepartment, $arrayIsSenior, SORT_DESC,$param['data']);
-                foreach ($param['data'] as $username => $data) { ?>
+            /* @var $entry ReportSummaryData */
+            if (!empty($param['data'])) {     
+                foreach ($param['data'] as $entry) { ?>
                     <tr>
                         <td>
-                            <?php echo $data['staff_office'] ?>
+                            <?php echo $entry->getOffice() ?>
                         </td>
                         <td>
-                            <?php echo $data['staff_department'] ?>
+                            <?php echo $entry->getDepartment() ?>
                         </td>
                         <td>
-                            <?php echo $data['staff_position'] ?>
+                            <?php echo $entry->getPosition() ?>
                         </td>
                         <td> 
-                            <a href="survey?action=renderForm&r=review&u=<?php echo $data['form_username'] ?>&uid=<?php echo $param['uid'] ?>">
-                            <?php echo $data['staff_name'] ?>
+                            <a href="survey?action=renderForm&r=review&u=<?php echo $entry->getUsername() ?>&uid=<?php echo $param['uid'] ?>">
+                            <?php echo $entry->getStaffName() ?>
                             </a>
                         </td>
                         <td>
-                            <?php echo ($data['is_senior']? "DGM or above" : "Below DGM") ?>
+                            <?php echo ($entry->getSeniority() ? "DGM or above" : "Below DGM") ?>
                         </td>
 
                         <td>
-                            <?php echo $data['appraiser_name'] ?>
+                            <?php echo $entry->getAOName() ?>
                         </td>
                         <td>
-                            <?php echo $data['countersigner_name'] ?>
+                            <?php 
+                                if (!empty($entry->getCO2Name())) {
+                                    echo $entry->getCO1Name()." & ".$entry->getCO2Name();
+                                } else {
+                                    echo $entry->getCO1Name();
+                                }
+                                
+                            ?>
                         </td>
                         <td>
-                            <?php echo $data['survey_commencement_date'] ?>
+                            <?php echo $entry->getPartAScore() ?>
                         </td>
                         <td>
-                            <?php echo $data['part_a_overall_score'] ?>
+                            <?php echo $entry->getPartBScore() ?>
                         </td>
                         <td>
-                            <?php echo $data['part_b1_overall_score'] ?>
+                            <?php echo $entry->getTotalScore() ?>
                         </td>
-                        <td>
-                            <?php echo $data['part_b2_overall_score'] ?>
+                        <td class='<?php echo ($entry->getSelfStatus()) ? '' : 'missing_alert' ?>'>
+                            <?php echo ($entry->getSelfStatus()) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td>
-                            <?php echo $data['part_a_total'] ?>
+                        <td class='<?php echo ($entry->getAOStatus()) ? '' : 'missing_alert' ?>'>
+                            <?php echo ($entry->getAOStatus()) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td>
-                            <?php echo $data['part_b_total'] ?>
+                        <td class='<?php echo ($entry->getCO1Status()) ? '' : 'missing_alert' ?>'>
+                            <?php echo ($entry->getCO1Status()) ? 'Yes' : 'No'; ?>
                         </td>
-                        <td>
-                            <?php echo $data['part_a_b_total'] ?>
-                        </td>
-                        <td class='<?php echo ($data['is_final_by_self']) ? '' : 'missing_alert' ?>'>
-                            <?php echo ($data['is_final_by_self']) ? 'Yes' : 'No'; ?>
-                        </td>
-                        <td class='<?php echo ($data['is_final_by_appraiser']) ? '' : 'missing_alert' ?>'>
-                            <?php echo ($data['is_final_by_appraiser']) ? 'Yes' : 'No'; ?>
-                        </td>
-                        <td class='<?php echo ($data['is_final_by_counter1']) ? '' : 'missing_alert' ?>'>
-                            <?php echo ($data['is_final_by_counter1']) ? 'Yes' : 'No'; ?>
-                        </td>
-                        <td class='<?php echo ($data['is_final_by_counter2']) ? '' : 'missing_alert' ?>'>
-                            <?php echo ($data['is_final_by_counter2']) ? 'Yes' : 'No'; ?>
+                        <td class='<?php echo ($entry->getCO2Status()) ? '' : 'missing_alert' ?>'>
+                            <?php echo ($entry->getCO2Status()) ? 'Yes' : 'No'; ?>
                         </td>
                         <?php if ($this->user->isAdmin) { ?>
                         <td>
-                            <input type="checkbox" class="is_locked_checkbox" username="<?php echo $data['form_username'] ?>" <?php echo ($data['is_locked']) ? 'checked' : '' ?>>
+                            <input type="checkbox" class="is_locked_checkbox" username="<?php echo $entry->getUsername() ?>" <?php echo ($entry->getLockStatus()) ? 'checked' : '' ?>>
                         </td>
                         <?php } ?>
                     </tr>

@@ -28,7 +28,7 @@ class ReportController extends PrivilegedZone {
         $this->extraCSS = 'report/report.css';
         $this->content = 'report.php';
         $this->extraCSS = array("report/report.css", "jquery-ui.css");
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js", "report.js");
+        $this->extraJS = array("report.js");
         $param['periodIndex'] = $periodIndex;
         if (!empty($param['uid'])) {
             $param['data'] = $data->getFormSummary($param['uid'], $userList);

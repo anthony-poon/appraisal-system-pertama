@@ -19,6 +19,37 @@ class UserBatchOperator {
         $this->dbConnector = new DbConnector();
     }
     
+    function createUserObj($userId = null, $showHidden = false) {
+        $statement = "SELECT user.*, ao.user_full_name as appraiser_name, "
+                . "co1.user_full_name as countersigner_1_name, "
+                . "co2.user_full_name as countersigner_2_name "
+                . "FROM pa_user as user "
+                . "LEFT JOIN pa_user as ao "
+                . "ON user.appraiser_username = ao.username "
+                . "LEFT JOIN pa_user as co1 "
+                . "ON user.appraiser_username = co1.username "
+                . "LEFT JOIN pa_user as co2 "
+                . "ON user.appraiser_username = co2.username";
+        if (empty($userId)) {
+            if (!$showHidden) {
+                $statement = $statement." WHERE user.`is_active`";
+            }
+            $query = $this->dbConnector->prepare($statement);
+            $query->execute();
+            $returnArray = array();
+            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+                $returnArray[] = new User($result);
+            }
+            return $returnArray;
+        } else if (!is_array($userId)){
+            $statement = $statement." WHERE user.`user_id` = :uid";
+            $query = $this->dbConnector->prepare($statement);
+            $query->bindValue(":uid",$userId);
+            $query->execute();
+            return new User($query->fetch(PDO::FETCH_ASSOC));            
+        }
+    }
+    
     function getUserAccessRight($username){
         $statement = "SELECT username, is_senior, is_admin, is_report_user, user_department FROM pa_user WHERE username = :username";
         $query = $this->dbConnector->prepare($statement);
@@ -164,5 +195,45 @@ class UserBatchOperator {
         if (!$errInfo) {
             throw new Exception($errInfo[2]);
         }
+    }
+
+    public function updateUser($user) {
+        /* @var $user User */
+        if (empty($this->dbConnection)) {
+            $this->dbConnection = new DbConnector();
+        }
+        $statement = "UPDATE pa_user set "
+                . "user_full_name = :user_full_name, "
+                . "user_email = :user_email, "
+                . "is_senior = :is_senior, "
+                . "is_admin = :is_admin, "
+                . "is_report_user = :is_report_user, "
+                . "user_department = :user_department, "
+                . "user_position = :user_position, "
+                . "user_office = :user_office, "
+                . "commence_date = :commence_date, "
+                . "appraiser_username = :appraiser_username, "
+                . "countersigner_username_1 = :countersigner_username_1, "
+                . "countersigner_username_2 = :countersigner_username_2, "
+                . "is_active = :is_active, "
+                . "is_hidden = :is_hidden "
+                . "WHERE user_id = :uid";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(":uid", $user->getUserID());
+        $query->bindValue(":user_full_name", $user->getStaffName());
+        $query->bindValue(":user_email", $user->getEmail());
+        $query->bindValue(":is_senior", $user->getIsSenior());
+        $query->bindValue(":is_admin", $user->getIsAdmin());
+        $query->bindValue(":is_report_user", $user->getIsReportUser());
+        $query->bindValue(":user_department", $user->getDepartment());
+        $query->bindValue(":user_position", $user->getPosition());
+        $query->bindValue(":user_office", $user->getOffice());
+        $query->bindValue(":commence_date", $user->getCommenceDate()->format("Y-m-d"));
+        $query->bindValue(":appraiser_username", $user->getAoUsername());
+        $query->bindValue(":countersigner_username_1", $user->getCo1Username());
+        $query->bindValue(":countersigner_username_2", $user->getCo2Username());
+        $query->bindValue(":is_active", $user->getIsActive());
+        $query->bindValue(":is_hidden", $user->getIsHidden());
+        $query->execute();
     }
 }

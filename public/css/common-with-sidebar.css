@@ -65,7 +65,7 @@ body {
 #sidebar #menu .selection {
     height: 80px;
     border-collapse: collapse;
-    //border-top: 2px rgb(200,200,200) solid;
+
     color: #2196F3;
     background-color: white;
     border-bottom: 2px rgb(200,200,200) solid;
@@ -73,13 +73,13 @@ body {
     font-size: 16px;
     align-items: center;
     padding-left: 140px;
-    //justify-content: center;
+
 }
 
 #sidebar #menu .selection:hover {
     background-color: #2196F3;
     color: white;
-    //justify-content: center;
+
 }
 
 #content.wrapper {

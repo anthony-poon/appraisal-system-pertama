@@ -33,7 +33,11 @@ abstract class TemplatedHTML implements IController {
             echo "<head>";
             echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" charset=\"UTF-8\" />";
             echo "<link rel='shortcut icon' href='public/img/favicon.ico'>";
-            
+            echo "<script type='text/javascript' src='public/js/jquery-2.1.3.js'></script>";
+            echo "<script type='text/javascript' src='public/js/jquery-ui.js'></script>";
+            echo "<link rel='stylesheet' type='text/css' href='public/css/jquery-ui.css'>";
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">";
+            echo "<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>";
             if (!empty($this->commonCSS)) {
                 echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"public/css/$this->commonCSS\">";  
             } else {
@@ -54,8 +58,7 @@ abstract class TemplatedHTML implements IController {
             } else if (!empty($this->extraJS)) {             
                 echo "<script type='text/javascript' src='public/js/$this->extraJS'></script>";
             }
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">";
-            echo "<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>";
+
             echo "</head>";
             echo "<body>";
             if (!empty($this->header)) {

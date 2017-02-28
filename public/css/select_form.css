@@ -117,7 +117,7 @@ img{
 
 .box.disabled {
     background-color: lightgray;
-    //color: transparent;   
+
     text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
 }
 

@@ -30,7 +30,7 @@ class ExcelReport {
         $userOperator = new UserBatchOperator();
         $emptySurvey = $userOperator->getEmptyUserData($uid);
         $populatedData = $this->populateEmptydata($emptySurvey);
-        $this->summary = array_merge($this->reportData->getFormSummary($uid), $populatedData);
+        $this->summary = array_merge($this->reportData->getFormDetail($uid), $populatedData);
 
         unset($this->summary['hirotaka.suzuki']);
         unset($this->summary['setsuo.suzuki']);

@@ -18,7 +18,135 @@ class AdminController extends PrivilegedZone{
     }
     
     function defaultAction($param = NULL) {
-        $this->changePWView($param);
+        $this->adminPanel($param);
+    }
+    
+    function adminPanel($param = NULL) {
+        $this->extraCSS = array("compiled/admin_panel/default.css", "font-awesome.min.css");
+        $this->content = "admin_panel/default.php";
+        $this->header = "surveyHeader.php";
+        //$this->commonCSS = "compiled";
+        $param["uid"] = $this->user->activeUid;
+        $this->view($param);
+    }
+    
+    function userListView($param = NULL) {
+        $this->extraCSS = array("compiled/admin_panel/user_list_view.css", "font-awesome.min.css", "material-kit.css");
+        $this->extraJS = array("material-kit.js", "material.min.js");
+        $this->content = "admin_panel/userListView.php";
+        $this->header = "surveyHeader.php";
+        $param["uid"] = $this->user->activeUid;
+        $userFactory = new UserBatchOperator();
+        if (!empty($param["show_inactive"])) {
+            $userObjs = $userFactory->createUserObj(null, true);
+        } else {
+            $userObjs = $userFactory->createUserObj();
+        }
+        
+        /* @var $user User */
+        foreach ($userObjs as $user) {
+            $param["users"][$user->getDepartment()][] = $user;
+        }
+        $this->view($param);
+    }
+    
+    function viewUser($param = NULL) {
+        $this->extraCSS = array("compiled/admin_panel/view_user.css", "font-awesome.min.css", "material-kit.css");
+        $this->content = "admin_panel/viewUser.php";
+        $this->header = "surveyHeader.php";
+        $param["uid"] = $this->user->activeUid;
+        $this->extraJS = array("material-kit.js", "material.min.js", "admin_panel/view_user.js", "moment.js");
+        $userFactory = new UserBatchOperator();
+        $param['user'] = $userFactory->createUserObj($param["user_id"]);
+        $setting = new SettingFactory();
+        $param["department_enum"] = $setting->getSetting("department");
+        $param["office_enum"] = $setting->getSetting("office");
+        $userArray = $userFactory->createUserObj();
+        foreach ($userArray as $user) {
+            /* @var $user User */
+            $param["user_enum"][$user->getUsername()] = $user->getStaffName();
+        }
+        asort($param["user_enum"]);
+        $this->view($param);
+    }
+    
+    function submitUser($param = NULL) {
+        $this->extraCSS = array("compiled/admin_panel/view_user.css", "font-awesome.min.css", "material-kit.css");
+        $this->content = "testing.php";
+        $this->header = "surveyHeader.php";
+        $param["uid"] = $this->user->activeUid;
+        $this->extraJS = array("material-kit.js", "material.min.js", "admin_panel/view_user.js", "moment.js");
+        $userFactory = new UserBatchOperator();
+        //$param ['user'] = $userFactory->createUserObj($param["user_id"]);
+        if (!preg_match("/^\d+$/", $param["user_id"])) {
+            throw new Exception("Invalid query: user_id");
+        }
+        $user = $userFactory->createUserObj($param["user_id"]);
+        /* @var $user User */
+        $user->setIsActive(FALSE);
+        $user->setIsAdmin(FALSE);
+        $user->setIsHidden(FALSE);
+        $user->setIsReportUser(FALSE);
+        $user->setIsSenior(FALSE);
+        foreach ($_POST as $fieldName => $value) {
+            if (!preg_match("/^[\w\-_\. ]+$/", $fieldName)) {
+                throw new Exception("Invalid query: ".$fieldName);
+            }
+            if (!preg_match("/^[\w\-_\.@ ]*$/", $value)) {
+                throw new Exception("Invalid query: ".$value);
+            }
+            switch ($fieldName) {
+                case "staff_name":
+                    $user->setStaffName(trim($value));
+                    break;
+                case "email":
+                    $user->setEmail(trim($value));
+                    break;
+                case "is_senior":
+                    $user->setIsSenior(TRUE);
+                    break;
+                case "is_admin":
+                    $user->setIsAdmin(TRUE);
+                    break;
+                case "is_report_user":
+                    $user->setIsReportUser(TRUE);
+                    break;
+                case "department":
+                    $user->setDepartment(trim($value));
+                    break;
+                case "position":
+                    $user->setPosition(trim($value));
+                    break;
+                case "office":
+                    $user->setOffice(trim($value));
+                    break;
+                case "commence_date":
+                    $date = DateTimeImmutable::createFromFormat("Y-m-d", trim($value));
+                    if (!$date) {
+                        throw new Exception("Invalid date format");
+                    }
+                    $user->setCommenceDate($date);
+                    break;
+                case "ao_username":
+                    $user->setAoUsername(trim($value));
+                    break;
+                case "co_username_1":
+                    $user->setCo1Username(trim($value));
+                    break;
+                case "co_username_2":
+                    $user->setCo2Username(trim($value));
+                    break;
+                case "is_active":
+                    $user->setIsActive(TRUE);
+                    break;                    
+            }
+        }
+        $userFactory->updateUser($user);
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        ob_clean();
+        header("Location: admin?action=viewUser&user_id=".$param["user_id"]);
+        exit;
     }
     
     function changePWView($param = NULL){
@@ -26,7 +154,6 @@ class AdminController extends PrivilegedZone{
         $this->content = "admin/changePw.php";
         $this->header = "sidebar.php";
         $this->commonCSS = "common-with-sidebar.css";
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $this->view($param);
     }
     
@@ -73,7 +200,6 @@ class AdminController extends PrivilegedZone{
         $this->header = "sidebar.php";
         $this->commonCSS = "common-with-sidebar.css";
         $this->extraCSS = array("admin/admin-user.css");
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $userOperator = new UserBatchOperator();
         $param["userDetail"] = $userOperator->getUserFullData();
         ksort($param["userDetail"]);
@@ -86,7 +212,6 @@ class AdminController extends PrivilegedZone{
         $this->header = "sidebar.php";
         $this->commonCSS = "common-with-sidebar.css";
         $this->extraCSS = array("admin/upload-file.css");
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $userOperator = new UserBatchOperator();
         $param["username"] = $userOperator->getUsername();
         ksort($param["username"]);
@@ -113,7 +238,6 @@ class AdminController extends PrivilegedZone{
     function firstTimeReset($param = NULL) {
         $this->commonCSS = "admin/first-time-pw.css";
         $this->content = "admin/firstTimePw.php";
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $this->view($param);
     }
     
@@ -204,7 +328,6 @@ class AdminController extends PrivilegedZone{
             $this->header = "sidebar.php";
             $this->extraCSS = "admin/my-doc.css";
             $this->content = "admin/myDocView.php";
-            $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
             $this->view($param);
         } else {
             if ($uploadRoot->isRootAFolder()) {
@@ -215,7 +338,6 @@ class AdminController extends PrivilegedZone{
                 $this->header = "sidebar.php";
                 $this->extraCSS = "admin/my-doc.css";
                 $this->content = "admin/myDocView.php";
-                $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
                 $this->view($param);
             } else {
                 // If it is a single file, download

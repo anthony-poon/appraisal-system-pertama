@@ -32,7 +32,7 @@ class SurveyController extends PrivilegedZone {
         $this->extraCSS = array("survey/form.css", "jquery-ui.css");
         $this->content = "survey/form.php";
         $this->header = "surveyHeader.php";
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js", "form-logic.js");
+        $this->extraJS = array("form-logic.js");
         $data = new FormData($param['u'], $param['uid']);
         if ($data->isNewForm()) {
             $data->renderNewForm($param['u']);
@@ -112,7 +112,6 @@ class SurveyController extends PrivilegedZone {
         }        
         $this->extraCSS = array("finish.css", "jquery-ui.css");
         $this->header = "surveyHeader.php";
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $this->content = "finish.php";
         $this->view();
     }
@@ -121,7 +120,6 @@ class SurveyController extends PrivilegedZone {
         $this->content = "survey/selectForm.php";
         $this->header = "surveyHeader.php";
         $this->extraCSS = "select_form.css";
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         parent::view($param);
     }
     
@@ -149,7 +147,6 @@ class SurveyController extends PrivilegedZone {
             $this->content = 'survey/subSelect.php';
             $this->header = "surveyHeader.php";
             $this->extraCSS = "select_form.css";
-            $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
             $this->view($param);
         } else {
             throw new Exception('Illegal parameter provided.');
@@ -161,7 +158,6 @@ class SurveyController extends PrivilegedZone {
             $this->content = 'survey/periodSelect.php';
             $this->header = "surveyHeader.php";
             $this->extraCSS = "select_form.css";
-            $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
             $param['u'] = $this->user->username;
             $param['selection'] = $this->user->availiblePeriod;
             $this->view($param);

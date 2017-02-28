@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    //background-color: #2196F3;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ body {
 #text {
     margin-top: 80px;
     position: relative;
-    //left: -50px;
+
 }
 
 #pw-form {
@@ -48,7 +48,7 @@ body {
     margin: 10px 0;
     position: relative;
     display: flex;
-    //left: -50px;
+
 }
 
 #pw-form label{

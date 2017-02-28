@@ -9,6 +9,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php phpinfo(); ?>
+        <?php  ?>
     </body>
 </html>

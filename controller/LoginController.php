@@ -39,7 +39,6 @@ class LoginController extends TemplatedHTML {
         }
         $this->extraCSS = 'login.css';
         $this->content = 'login.php';
-        $this->extraJS = array("jquery-2.1.3.js", "jquery-ui.js");
         $this->view();
     }
 

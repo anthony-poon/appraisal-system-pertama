@@ -31,6 +31,7 @@ class ReportData {
                 . "LEFT JOIN pa_user as user ON "
                 . "form.form_username = user.username "
                 . "WHERE user.is_active "
+                . "AND NOT user.is_hidden "
                 . "AND form.survey_uid IN (SELECT * FROM ("
                 . "SELECT uid from pa_form_period "
                 . "ORDER BY uid DESC "
@@ -44,24 +45,7 @@ class ReportData {
         }
         return $data;
     }
-    
-    function getSubmittedSurveyIndex($uid) {
-        $statement = "SELECT form_username FROM pa_form_data WHERE (survey_uid = :uid)";
-        $query = $this->dbConnection->prepare($statement);
-        $query->bindParam(':uid', $uid);
-        $query->execute();
 
-        while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
-            $index[] = $result['form_username'];
-        }
-        
-        if (!empty($index)){
-            return $index;
-        } else {
-            return $index = array();
-        }
-    }
-    
     function getAvailablePeriod() {
         $statement = "SELECT * FROM pa_form_period";
         $query = $this->dbConnection->prepare($statement);
@@ -75,18 +59,17 @@ class ReportData {
     }
     
     function getFormSummary($uid, $usernameArray = null) {
-		$returnArray = array();
-        if (empty($usernameArray)) {
-            $statement = "SELECT form_username, survey_uid, staff_name, is_senior, "
-                    . "staff_position, staff_department, staff_office, appraiser_name, countersigner_name, countersigner_1_name, "
-                    . "countersigner_2_name, survey_commencement_date, survey_period, survey_type, function_training_0_to_1_year, "
-                    . "function_training_1_to_2_year, function_training_2_to_3_year, generic_training_0_to_1_year, generic_training_1_to_2_year, "
-                    . "generic_training_2_to_3_year, survey_overall_comment, part_a_overall_score, part_a_total, countersigner_1_part_a_score, countersigner_2_part_a_score,"
-                    . "part_b1_overall_score, part_b2_overall_score, countersigner_1_part_b_score, countersigner_2_part_b_score,"
-                    . "part_b_total, part_a_b_total, is_final_by_self, is_final_by_appraiser, is_final_by_counter1, is_final_by_counter2, is_locked FROM pa_form_data WHERE (survey_uid = :uid)";
-            $query = $this->dbConnection->prepare($statement);
-            $query->bindParam(':uid', $uid);
-        } else {
+        $returnArray = array();
+        
+        $statement = "SELECT form_username, survey_uid, staff_name, form.is_senior, "
+                . "staff_position, staff_department, staff_office, appraiser_name, countersigner_name, countersigner_1_name, "
+                . "countersigner_2_name, survey_period, survey_type, part_a_total, "
+                . "part_b_total, part_a_b_total, is_final_by_self, is_final_by_appraiser, is_final_by_counter1, is_final_by_counter2, is_locked "
+                . "FROM pa_form_data as form "
+                . "LEFT JOIN pa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE NOT user.is_hidden AND (survey_uid = :uid)";
+        if (!empty($usernameArray)) {
             foreach ($usernameArray as $name) {
                 if (!preg_match("/^([0-9a-zA-Z\.,])+$/", $name)) {
                     throw new Exception("Illegal query string");
@@ -94,11 +77,42 @@ class ReportData {
                 $temp[] = "\"".$name."\"";
             }
             $str = implode(",", $temp);
-            $statement = "SELECT * FROM pa_form_data WHERE (survey_uid = :uid) AND (form_username in ($str))";
-            $query = $this->dbConnection->prepare($statement);
-            $query->bindParam(':uid', $uid);
-
-        }        
+            $statement = $statement. " AND (form_username in ($str))";
+        }
+        $statement = $statement. " ORDER BY staff_office, staff_department, is_senior DESC";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindParam(':uid', $uid);
+      
+        $query->execute();
+        $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($resultArray as $result) {
+            $returnArray[$result["form_username"]] = new ReportSummaryData($result);
+        }
+        return $returnArray;
+    }
+    
+    function getFormDetail($uid) {
+        // No defailt for wach part yet
+        $returnArray = array();
+        
+        $statement = "SELECT * "
+                . "FROM pa_form_data as form "
+                . "LEFT JOIN pa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE NOT user.is_hidden AND (survey_uid = :uid)";
+        if (!empty($usernameArray)) {
+            foreach ($usernameArray as $name) {
+                if (!preg_match("/^([0-9a-zA-Z\.,])+$/", $name)) {
+                    throw new Exception("Illegal query string");
+                }
+                $temp[] = "\"".$name."\"";
+            }
+            $str = implode(",", $temp);
+            $statement = $statement. " AND (form_username in ($str))";
+        }
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindParam(':uid', $uid);
+      
         $query->execute();
         $queryResult = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($queryResult as $query) {
@@ -108,7 +122,11 @@ class ReportData {
     }
     
     function getPartAData($uid) {
-        $statement = "SELECT * FROM pa_part_a WHERE (survey_uid = :uid)";
+        $statement = "SELECT * "
+                . "FROM pa_part_a as form "
+                . "LEFT JOIN oa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE (survey_uid = :uid)";
         $query = $this->dbConnection->prepare($statement);
         $query->bindParam(':uid', $uid);
         $query->execute();
@@ -121,7 +139,11 @@ class ReportData {
     }
     
     function getPartB1Data($uid) {
-        $statement = "SELECT * FROM pa_part_b1 WHERE (survey_uid = :uid)";
+        $statement = "SELECT * "
+                . "FROM pa_part_b1 as form "
+                . "LEFT JOIN oa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE (survey_uid = :uid)";
         $query = $this->dbConnection->prepare($statement);
         $query->bindParam(':uid', $uid);
         $query->execute();
@@ -134,7 +156,11 @@ class ReportData {
     }
     
     function getPartB2Data($uid) {
-        $statement = "SELECT * FROM pa_part_b2 WHERE (survey_uid = :uid)";
+        $statement = "SELECT * "
+                . "FROM pa_part_b2 as form "
+                . "LEFT JOIN oa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE (survey_uid = :uid)";
         $query = $this->dbConnection->prepare($statement);
         $query->bindParam(':uid', $uid);
         $query->execute();
@@ -147,7 +173,11 @@ class ReportData {
     }
     
     function getGoalData($uid) {
-        $statement = "SELECT * FROM pa_part_d WHERE (survey_uid = :uid)";
+        $statement = "SELECT * "
+                . "FROM pa_part_d as form "
+                . "LEFT JOIN pa_user as user ON "
+                . "form.form_username = user.username "
+                . "WHERE (survey_uid = :uid)";
         $query = $this->dbConnection->prepare($statement);
         $query->bindParam(':uid', $uid);
         $query->execute();

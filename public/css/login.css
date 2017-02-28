@@ -7,24 +7,29 @@
     font-family: open-sans;
     src: url(../fonts/OpenSans-Regular.ttf);
 }
-#back-plate {
-    position: fixed;
-    width: 100%;
-    top: 0%;
-    height: 40%;
-    background-color: #2196F3;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-html, body {
-	height: initial;
+#back-plate {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 35vh;
+    background-color: #2196F3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+    z-index: 0;
 }
+
 .wrapper{
-    position: relative;
+    
     z-index: 1;
-    width : 600px;
+    padding: 50px;
     height: 500px;
-    margin: 100px auto;
+    width: 600px;
     vertical-align: middle;
     background-color: white;
     border: 2px;
@@ -40,15 +45,13 @@ html, body {
 }
 
 .wrapper .error_message {
-    position: absolute;
-    top: 40px;
     color: #F44336;
     width: 100%;
     text-align: center;
 }
 
 .wrapper img{
-    padding: 90px 0 30px 0;
+    padding: 20px 0 30px 0;
 }
 
 .wrapper .input-row{
