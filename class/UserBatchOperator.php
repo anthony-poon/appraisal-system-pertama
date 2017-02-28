@@ -228,7 +228,12 @@ class UserBatchOperator {
         $query->bindValue(":user_department", $user->getDepartment());
         $query->bindValue(":user_position", $user->getPosition());
         $query->bindValue(":user_office", $user->getOffice());
-        $query->bindValue(":commence_date", $user->getCommenceDate()->format("Y-m-d"));
+        if ($user->getCommenceDate() === null) {
+            $query->bindValue(":commence_date", NULL);
+        } else {
+            $query->bindValue(":commence_date", $user->getCommenceDateStr());
+        }
+        
         $query->bindValue(":appraiser_username", $user->getAoUsername());
         $query->bindValue(":countersigner_username_1", $user->getCo1Username());
         $query->bindValue(":countersigner_username_2", $user->getCo2Username());

@@ -135,6 +135,14 @@ class User {
     function getCommenceDate() {
         return $this->commenceDate;
     }
+    
+    function getCommenceDateStr() {
+        if (!empty($this->commenceDate)) {
+            return $this->commenceDate->format("Y-m-d");
+        } else {
+            return "";
+        }
+    }
 
     function getAoUsername() {
         return $this->aoUsername;
@@ -212,7 +220,7 @@ class User {
         $this->office = $office;
     }
 
-    function setCommenceDate(DateTimeImmutable $commenceDate) {
+    function setCommenceDate(DateTimeImmutable $commenceDate = null) {
         $this->commenceDate = $commenceDate;
     }
 

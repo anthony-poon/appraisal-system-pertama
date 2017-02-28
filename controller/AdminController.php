@@ -92,7 +92,7 @@ class AdminController extends PrivilegedZone{
             if (!preg_match("/^[\w\-_\. ]+$/", $fieldName)) {
                 throw new Exception("Invalid query: ".$fieldName);
             }
-            if (!preg_match("/^[\w\-_\.@ ]*$/", $value)) {
+            if (!preg_match("/^[\w\-_\.@ &]*$/", $value)) {
                 throw new Exception("Invalid query: ".$value);
             }
             switch ($fieldName) {
@@ -121,11 +121,16 @@ class AdminController extends PrivilegedZone{
                     $user->setOffice(trim($value));
                     break;
                 case "commence_date":
-                    $date = DateTimeImmutable::createFromFormat("Y-m-d", trim($value));
-                    if (!$date) {
-                        throw new Exception("Invalid date format");
+                    if (!empty($value)) {
+                        $date = DateTimeImmutable::createFromFormat("Y-m-d", trim($value));
+                        if (!$date) {
+                            throw new Exception("Invalid date format");
+                        }
+                        $user->setCommenceDate($date);
+                    } else {
+                        $user->setCommenceDate(null);
                     }
-                    $user->setCommenceDate($date);
+                    
                     break;
                 case "ao_username":
                     $user->setAoUsername(trim($value));
@@ -145,7 +150,7 @@ class AdminController extends PrivilegedZone{
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         ob_clean();
-        header("Location: admin?action=viewUser&user_id=".$param["user_id"]);
+        header("Location: admin?action=userListView");
         exit;
     }
     

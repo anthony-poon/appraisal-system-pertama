@@ -13,26 +13,34 @@ $(document).ready(function(){
         var formOk = true;
         var errorMsg = $("<div class='error-msg col-sm-4'></div>");
         var firstErrorOffset = 0;
-        $.each($("input[type='text']"), function(){
+        $.each($("[required='true']"), function(){
             if ($(this).val().trim() === "") {
                 formOk = false;
-                errorMsg.text("Cannot be empty");
-                $(this).parents(".form-group").append(errorMsg.clone());
+                if (!$.contains($(this), ".error-msg")) {
+                    errorMsg.text("Cannot be empty");
+                    $(this).parents(".form-group").append(errorMsg.clone());
+                }                
                 if (firstErrorOffset === 0) {
                     firstErrorOffset = $(this).offset().top;
                 }
             }
         });
         var dateString = $("[name='commence_date']").val();
-        dateString = dateString.replace(/\//g, "-");
-        $("[name='commence_date']").val(dateString);
-        if (!moment(dateString, "YYYY-MM-DD", true).isValid()) {
-            formOk = false;
-            errorMsg.text("Invalid date format");
-            if (firstErrorOffset === 0) {
-                firstErrorOffset = $("[name='commence_date']").offset().top;
+        if (dateString !== "") {
+            dateString = dateString.replace(/\//g, "-");
+            $("[name='commence_date']").val(dateString);
+            if (!moment(dateString, "YYYY-MM-DD", true).isValid()) {
+                formOk = false;
+                errorMsg.text("Invalid date format");
+                if (firstErrorOffset === 0) {
+                    firstErrorOffset = $("[name='commence_date']").offset().top;
+                }
+                if (!$.contains("[name='commence_date']", ".error-msg")) {
+                    errorMsg.text("Invalid date format");
+                    $("[name='commence_date']").parents(".form-group").append(errorMsg.clone());
+                }
+
             }
-            $("[name='commence_date']").parents(".form-group").append(errorMsg.clone());
         }
         if (!formOk) {
             event.preventDefault();

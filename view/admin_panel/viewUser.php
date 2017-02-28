@@ -4,7 +4,7 @@
 
 ?>
 <div class='container'>
-    <form class='row' action='admin?action=submitUser&user_id=<?php echo $user->getUserID() ?>' method='POST' id='user-wrapper' data-user-id='<?php echo $user->getUserID() ?>'>
+    <form novalidate="true" class='row' action='admin?action=submitUser&user_id=<?php echo $user->getUserID() ?>' method='POST' id='user-wrapper' data-user-id='<?php echo $user->getUserID() ?>'>
         <div class='container-fluid'>
             <div class='row form-group'>
                 <div class='col-sm-2 col-sm-offset-1'>
@@ -19,7 +19,7 @@
                     Staff Name:
                 </div>
                 <div class='col-sm-5'>
-                    <input type='text' name='staff_name' class='form-control' value='<?php echo $user->getStaffName(); ?>'>   
+                    <input required='true' type='text' name='staff_name' class='form-control' value='<?php echo $user->getStaffName(); ?>'>   
                 </div>                
             </div>
             <div class='row form-group'>
@@ -84,7 +84,7 @@
                     Email:
                 </div>
                 <div class='col-sm-5'>
-                    <input type='text' name='email' class='form-control' value='<?php echo $user->getEmail(); ?>'>   
+                    <input type='email' name='email' class='form-control' value='<?php echo $user->getEmail(); ?>'>   
                 </div>                
             </div>
             <div class='row form-group'>
@@ -136,7 +136,7 @@
                     Job Title:
                 </div>                
                 <div class='col-sm-5'>
-                    <input type='text' name='position' class='form-control' value='<?php echo $user->getPosition(); ?>'>   
+                    <input required='true' type='text' name='position' class='form-control' value='<?php echo $user->getPosition(); ?>'>   
                 </div>                  
             </div>
             <div class='row form-group'>
@@ -162,9 +162,9 @@
             <div class='row form-group'>
                 <div class='col-sm-2 col-sm-offset-1'>
                     Commence Date: (yyyy-mm-dd)
-                </div>                
+                </div>      
                 <div class='col-sm-5'>
-                    <input type='text' name='commence_date' class='form-control' value='<?php echo $user->getCommenceDate()->format("Y-m-d"); ?>'>   
+                    <input type='text' name='commence_date' class='form-control' value='<?php echo $user->getCommenceDateStr(); ?>'>   
                 </div>                 
             </div>
             <div class='row form-group'>
