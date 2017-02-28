@@ -32,7 +32,7 @@
                 <?php if (empty($param['child'])) { ?>
                 <div class="container-fluid">
                     <div class="dropdown">
-                        <button id="other_survey_dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View previous survey
+                        <button id="other_survey_dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Other survey
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <?php                                
