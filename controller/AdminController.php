@@ -31,6 +31,9 @@ class AdminController extends PrivilegedZone{
     }
     
     function userListView($param = NULL) {
+        if (!$this->user->isAdmin) {
+            throw new Exception("You're not a admin");
+        }
         $this->extraCSS = array("compiled/admin_panel/user_list_view.css", "font-awesome.min.css", "material-kit.css");
         $this->extraJS = array("material-kit.js", "material.min.js");
         $this->content = "admin_panel/userListView.php";
@@ -51,6 +54,9 @@ class AdminController extends PrivilegedZone{
     }
     
     function viewUser($param = NULL) {
+        if (!$this->user->isAdmin) {
+            throw new Exception("You're not a admin");
+        }
         $this->extraCSS = array("compiled/admin_panel/view_user.css", "font-awesome.min.css", "material-kit.css");
         $this->content = "admin_panel/viewUser.php";
         $this->header = "surveyHeader.php";
@@ -71,6 +77,9 @@ class AdminController extends PrivilegedZone{
     }
     
     function submitUser($param = NULL) {
+        if (!$this->user->isAdmin) {
+            throw new Exception("You're not a admin");
+        }
         $this->extraCSS = array("compiled/admin_panel/view_user.css", "font-awesome.min.css", "material-kit.css");
         $this->content = "testing.php";
         $this->header = "surveyHeader.php";
