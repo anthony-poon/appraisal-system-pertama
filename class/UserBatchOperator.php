@@ -27,9 +27,9 @@ class UserBatchOperator {
                 . "LEFT JOIN pa_user as ao "
                 . "ON user.appraiser_username = ao.username "
                 . "LEFT JOIN pa_user as co1 "
-                . "ON user.appraiser_username = co1.username "
+                . "ON user.countersigner_username_1 = co1.username "
                 . "LEFT JOIN pa_user as co2 "
-                . "ON user.appraiser_username = co2.username";
+                . "ON user.countersigner_username_2 = co2.username";
         if (empty($userId)) {
             if (!$showHidden) {
                 $statement = $statement." WHERE user.`is_active`";
@@ -256,7 +256,42 @@ class UserBatchOperator {
         $query->bindValue(":is_hidden", $user->getIsHidden());
         $query->execute();
         
-        $statement = "(SELECT MAX(uid) FROM pa_form_period WHERE is_active)";
+        // regrab the object and update current form
+        $user = $this->createUserObj($user->getUserID());
+        $statement = "UPDATE `pa_form_data` SET staff_name = :staff_name, "
+                . "is_senior = :is_senior, "
+                . "staff_department = :department, "
+                . "staff_position = :position, "
+                . "staff_office = :office, "
+                . "appraiser_name = :ao_name, "
+                . "countersigner_name = :co_combined, "
+                . "countersigner_1_name = :co1_name, "
+                . "countersigner_2_name = :co2_name, "
+                . "survey_commencement_date = :commence_date "
+                . "WHERE survey_uid = (SELECT MAX(uid) FROM pa_form_period WHERE is_active) "
+                . "AND form_username = :username";
+        $query = $this->dbConnection->prepare($statement);
+        $query->bindValue(":staff_name", $user->getStaffName());
+        $query->bindValue(":is_senior", $user->getIsSenior());
+        $query->bindValue(":department", $user->getDepartment());
+        $query->bindValue(":position", $user->getPosition());
+        $query->bindValue(":office", $user->getOffice());
+        $query->bindValue(":ao_name", $user->getAoName());
+        $str = $user->getCo1Name();
+        if (!empty($user->getCo2Name())) {
+            $str = $str." & ".$user->getCo2Name();
+        }
+        $query->bindValue(":co_combined", $str);
+        $query->bindValue(":co1_name", $user->getCo1Name());
+        $query->bindValue(":co2_name", $user->getCo2Name());
+        
+        if ($user->getCommenceDate() === null) {
+            $query->bindValue(":commence_date", NULL);
+        } else {
+            $query->bindValue(":commence_date", $user->getCommenceDateStr());
+        }
+        $query->bindValue(":username", $user->getUsername());
+        $query->execute();
         
     }
 }

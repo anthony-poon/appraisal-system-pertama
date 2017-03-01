@@ -139,7 +139,6 @@ class AdminController extends PrivilegedZone{
                     } else {
                         $user->setCommenceDate(null);
                     }
-                    
                     break;
                 case "ao_username":
                     $user->setAoUsername(trim($value));

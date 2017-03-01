@@ -75,7 +75,10 @@ class User {
                     case "countersigner_username_2":
                         $this->co2Username = $value;
                         break;
-                    case "countersigner_1_name":
+                    case "countersigner_1_name";
+                        $this->co1Name = $value;
+                        break;
+                    case "countersigner_2_name":
                         $this->co2Name = $value;
                         break;
                     case "is_active":
