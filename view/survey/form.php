@@ -29,7 +29,6 @@
         
         <div class="contentWrapper">
             <div id='button_section'>
-                <?php if (empty($param['child'])) { ?>
                 <div class="container-fluid">
                     <div class="dropdown">
                         <button id="other_survey_dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Other survey
@@ -38,7 +37,7 @@
                             <?php                                
                                 foreach ($param["available_uid"] as $id => $periodName) {
                                     if ($param['uid'] != $id) {
-                                        echo "<li data-uid='$id'><a href='survey?action=renderForm&r=self&uid=$id&u=".$param['u']."&child=true' target='_blank'>".$periodName."</a></li>";
+                                        echo "<li data-uid='$id'><a href='survey?action=viewOnly&uid=$id&u=".$param['u']."' target='_blank'>".$periodName."</a></li>";
                                     }
                                 }
                             ?>
@@ -46,7 +45,6 @@
                         <input type="button" id="excel_button" class='btn btn-primary' value="Print in Excel format">
                     </div>
                 </div>
-                <?php } ?>
             </div>
             <div class='logo'>
                 <img src="public/img/logo.png">

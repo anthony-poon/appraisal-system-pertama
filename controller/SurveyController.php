@@ -56,9 +56,19 @@ class SurveyController extends PrivilegedZone {
     }
     
     function viewOnly($param = null) {
-        $this->extraCSS = array("survey/form.css", "jquery-ui.css");
+        $this->extraCSS = array("survey/form_view_only.css", "jquery-ui.css");
         $this->content = "survey/form_view_only.php";
         $this->header = "surveyHeader.php";
+        if (empty($param['u'])) {
+            throw new Exception("Missing GET var u");
+        }
+        if (empty($param['uid'])) {
+            throw new Exception("Missing GET var uid");
+        }
+        $data = new FormData($param['u'], $param['uid']);
+        if ($data->isNewForm()) {
+            throw new Exception("Form do not exist");
+        }
         $param["data"] = $data->getFormData();
         $this->view($param);
     }

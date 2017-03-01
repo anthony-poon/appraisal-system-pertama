@@ -69,7 +69,7 @@ and open the template in the editor.
                             <?php echo $entry->getPosition() ?>
                         </td>
                         <td> 
-                            <a href="survey?action=renderForm&r=review&u=<?php echo $entry->getUsername() ?>&uid=<?php echo $param['uid'] ?>">
+                            <a href="survey?action=viewOnly&u=<?php echo $entry->getUsername() ?>&uid=<?php echo $param['uid'] ?>">
                             <?php echo $entry->getStaffName() ?>
                             </a>
                         </td>
