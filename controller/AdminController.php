@@ -76,6 +76,53 @@ class AdminController extends PrivilegedZone{
         $this->view($param);
     }
     
+    function addUserView($param = NULL) {
+        if (!$this->user->isAdmin) {
+            throw new Exception("You're not a admin");
+        }
+        $this->extraCSS = array("compiled/admin_panel/add_user.css", "font-awesome.min.css", "material-kit.css");
+        $this->content = "admin_panel/addUser.php";
+        $this->header = "surveyHeader.php";
+        $this->extraJS = array("material-kit.js", "material.min.js", "admin_panel/add_user.js", "moment.js");
+        $this->view($param);
+    }
+   
+    function addUserSubmit($param = NULL) {
+        try {
+            if (!$this->user->isAdmin) {
+                throw new Exception("You're not a admin");
+            }
+            $user = new User();
+            if (empty($_POST["username"])) {
+                throw new Exception("Missing username");
+            }
+            if (empty($_POST["staff_name"])) {
+                throw new Exception("Missing staff name");
+            }
+            if (empty($_POST["password"])) {
+                throw new Exception("Missing Password");
+            }
+            if (!preg_match("/^[a-z\.]+$/", $_POST["username"])) {
+                throw new Exception("Username contains invalid character");
+            }
+            if (!preg_match("/^[a-z A-Z]+$/", $_POST["staff_name"])) {
+                throw new Exception("Username contains invalid character");
+            }
+            $user->setStaffName($_POST["staff_name"]);
+            $user->setUsername($_POST["username"]);
+            $userFactory = new UserBatchOperator();
+            $userId = $userFactory->addUser($user, $_POST["password"]);
+            ob_clean();
+            header("Location: admin?action=viewUser&user_id=$userId");
+        } catch (Exception $ex){
+            if ($ex->getCode() == "23000") {
+                echo "Username already exist";
+            } else {
+                echo $ex->getMessage();
+            }
+        }
+    }
+    
     function submitUser($param = NULL) {
         if (!$this->user->isAdmin) {
             throw new Exception("You're not a admin");

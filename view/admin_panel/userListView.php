@@ -4,6 +4,7 @@
 <div class='container'>
     <div class='row'>
         <div class='col-sm-offset-2'>
+            <a href='admin?action=addUserView' class='btn btn-primary btn-sm'>Add User</a>
             <?php 
                 if (empty($param["show_inactive"])) {
                     echo "<a href='admin?action=userListView&show_inactive=true' class='btn btn-primary btn-sm'>Show Inactive Account</a>";

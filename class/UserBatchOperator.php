@@ -19,6 +19,16 @@ class UserBatchOperator {
         $this->dbConnector = new DbConnector();
     }
     
+    function addUser(User $user, $password) {
+        $statement = "INSERT INTO pa_user SET user_full_name = :fullName, username = :username, user_password = :pw";
+        $query = $this->dbConnector->prepare($statement);
+        $query->bindValue(":fullName", $user->getStaffName());
+        $query->bindValue(":username", $user->getUsername());
+        $query->bindValue(":pw", $password);
+        $query->execute();
+        return $this->dbConnector->lastInsertId();
+    }
+    
     function createUserObj($userId = null, $showHidden = false) {
         $statement = "SELECT user.*, ao.user_full_name as appraiser_name, "
                 . "co1.user_full_name as countersigner_1_name, "
