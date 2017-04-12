@@ -18,7 +18,7 @@ class SurveyController extends PrivilegedZone {
     
     function defaultAction($param = NULL) {
         if (empty($this->user->appraisee) && empty($this->user->countersignee)){
-            header('Location: survey?action=renderForm&r=self&u='.$this->user->username.'&uid='.$this->user->availiblePeriod['uid']);
+            header('Location: survey?action=renderForm&r=self&u='.$this->user->username.'&uid='.SURVEY_UID);
         } else {
             $param["u"] =  $this->user->username;
             $param["uid"] =  $this->user->activeUid;
@@ -177,7 +177,7 @@ class SurveyController extends PrivilegedZone {
             $this->header = "surveyHeader.php";
             $this->extraCSS = "select_form.css";
             $param['u'] = $this->user->username;
-            $param['selection'] = $this->user->availiblePeriod;
+            $param['selection'] = SURVEY_UID;
             $this->view($param);
         } else {
             throw new Exception('Illegal parameter provided.');
@@ -188,7 +188,7 @@ class SurveyController extends PrivilegedZone {
         // Overiding method so that appraisee and countersigner will have different default
         if (empty($this->content)) {
             if (empty($this->user->appraisee) && empty($this->user->countersignee)){
-                header('Location: survey?action=renderForm&r=self&u='.$this->user->username.'&uid='.$this->user->availiblePeriod['uid']);
+                header('Location: survey?action=renderForm&r=self&u='.$this->user->username.'&uid='.SURVEY_UID);
             }
         }        
         if (!empty($param)) {

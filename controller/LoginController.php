@@ -65,7 +65,7 @@ class LoginController extends TemplatedHTML {
                     if (!empty($user->appraisee) || !empty($user->appraisee)) {
                         header('Location: survey');
                     } else {
-                        header('Location: survey?action=renderForm&r=self&uid='.$user->availiblePeriod['uid'].'&u='.$user->username);
+                        header('Location: survey?action=renderForm&r=self&uid='.SURVEY_UID.'&u='.$user->username);
                     }
                 } else if ($user->isAdmin) {
                     header('Location: report');
