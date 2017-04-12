@@ -11,10 +11,10 @@
         <ul>
             <!--<li>Account Setting</li>-->
             <?php if ($this->user->isAdmin) { ?>
-            <li><a href='report?uid=<?php echo $param["uid"] ?>'>Admin Panel</a></li>
+            <li><a href='report?uid=<?php echo SURVEY_UID ?>'>Admin Panel</a></li>
             <li><a href='admin'>Settings</a></li>
             <?php } else { ?>
-            <li><a href='report?uid=<?php echo $param["uid"] ?>'>Report</a></li>
+            <li><a href='report?uid=<?php echo SURVEY_UID ?>'>Report</a></li>
             <?php } ?>
             <li><a href='survey'>Main Page</a></li>            
             <li><a href='login?action=logout'>Logout</a></li>
