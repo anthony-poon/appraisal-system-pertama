@@ -148,7 +148,7 @@ class AdminController extends PrivilegedZone{
             if (!preg_match("/^[\w\-_\. ]+$/", $fieldName)) {
                 throw new Exception("Invalid query: ".$fieldName);
             }
-            if (!preg_match("/^[\w\-_\.@\\\\ &\/]*$/", $value)) {
+            if (!preg_match("/^[\w\-_\.@\\\\ &\/,]*$/", $value)) {
                 throw new Exception("Invalid query: ".$value);
             }
             switch ($fieldName) {
