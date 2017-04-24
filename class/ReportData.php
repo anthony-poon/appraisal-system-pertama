@@ -72,6 +72,7 @@ class ReportData {
         if (!empty($usernameArray)) {
             foreach ($usernameArray as $name) {
                 if (!preg_match("/^([0-9a-zA-Z\.,])+$/", $name)) {
+					var_dump($name);
                     throw new Exception("Illegal query string");
                 }
                 $temp[] = "\"".$name."\"";
